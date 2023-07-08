@@ -1,6 +1,5 @@
 4 characters ( white mage, dark mage, knight, jester)
 princess
-fairy
 
 
 dialog system

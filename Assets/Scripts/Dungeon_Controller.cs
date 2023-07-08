@@ -9,17 +9,14 @@ public class Dungeon_Controller : MonoBehaviour
     [SerializeField] Dungeon_TileData EmptyRoom;
     [SerializeField] Dungeon_TileData EmptyTile;
 
-    public Dungeon_Tile[,] tiles = new Dungeon_Tile[6, 5];  
-    
+    [SerializeField] public Dungeon_Tile[] alltiles;
+    public Dungeon_Tile[,] tiles = new Dungeon_Tile[6,5];
+
     private void Start()
     {
-        for (int j = 0; j < 5; j++)
+        for(int i = 0; i < alltiles.Length; i++)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                tiles[i,j] = Instantiate(Tile, transform).GetComponent<Dungeon_Tile>();
-                tiles[i, j].GetComponent<RectTransform>().anchoredPosition = new Vector3(i * 96, j * -96, 0);
-            }
+            tiles[i % 6, Mathf.FloorToInt(i / 6)] = alltiles[i];
         }
 
         SetTile(3, 4, EmptyTile);

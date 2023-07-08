@@ -21,4 +21,5 @@ public class Dungeon_Tile: MonoBehaviour
         GetComponent<Button>().interactable = tileData.CanModify;
         GetComponent<Image>().sprite = tileData.TileSprite;
     }
+
 }

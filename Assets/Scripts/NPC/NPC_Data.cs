@@ -46,6 +46,9 @@ public class NPC_Data
               Random.Range(_level / 2 + 1, _level*2 + 1):
               Random.Range(0, _level + 1);
         Potions = Random.Range(0, ((_level+1)/2));
+
+        Health = MaxHealth;
+        Mana = MaxMana;
     }
 
     private CharacterSprite ChooseRandomSprite()
@@ -77,6 +80,8 @@ public class NPC_Data
         if (increaseInt) Inteligence++;
         Potions = Random.Range(0, ((Level + 1) / 2));
         GoldWorth = CalculateGoldWorth();
+        Health = MaxHealth;
+        Mana = MaxMana;
     }
 
     private int CalculateGoldWorth()
@@ -87,7 +92,7 @@ public class NPC_Data
         return (int)finalValue;
     }
 
-    private string[] namepool = { "Wren", "Turnip", "Luna", "Gooseman", "AAAA", "Link", "MyBum", "Dan", "MrButt", "Homer", "Puggle", "Reimu", "Cirno", "Jerna", "Ben", "Alex", "Alek", "jekhkl", "Nutt", "Jerry", "PigPig", "Peppy", "Ronald", "Mandy", "Eggbean", "Tess","Mike","Dumpstin","Sammule","Legend","Jane","Chris","Melon","Fridge"};
+    private string[] namepool = { "Wren", "Turnip", "Luna", "Gooseman", "AAAA", "Link", "MyButt", "Dan", "MrBum", "Homer", "Puggle", "Reimu", "Cirno", "Jerna", "Ben", "Alex", "Alek", "jekhkl", "Nutt", "Jerry", "PigPig", "Peppy", "Ronald", "Mandy", "Eggbean", "Tess","Mike","Dumpstin","Sammule","Legend","Jane","Chris","Melon","Fridge"};
     private string RandomizeName()
     {
         int index = Random.Range(0, namepool.Length);

@@ -43,10 +43,10 @@ public enum LootTier
 
 public enum CharacterRole
 {
-    Fighter = 1,
-    Mage = 2,
-    Tank = 3,
-    Explorer = 4,
+    Fighter = 0,
+    Mage = 1,
+    Tank = 2,
+    Explorer = 3,
 }
 
 [Flags]
@@ -62,6 +62,14 @@ public enum TileType
 {
     Locked = 0,
     Empty = 1,
-    Room = 2,
-    Event = 3,
+    Enemy = 2,
+    Trap = 3,
+    Treasure = 4
+}
+public enum EnemyType
+{
+    Slimeow = 1,
+    Fairy = 2,
+    Puglist = 3,
+    CinamonWiz = 4,
 }

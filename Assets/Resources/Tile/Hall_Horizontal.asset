@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hall_Horizontal
   m_EditorClassIdentifier: 
   TileName: Hall_Horizontal
-  TileSprite: {fileID: 21300000, guid: 25ab12653885c2046a6b970d303bd9f5, type: 3}
+  TileSprite: {fileID: 21300000, guid: 5de3f2b4d0fb41248a24978bd1aa412d, type: 3}
   CanModify: 1
   TileType: 2
   TileExitDirections: 10

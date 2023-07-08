@@ -62,9 +62,7 @@ public enum TileType
 {
     Locked = 0,
     Empty = 1,
-    Enemy = 2,
-    Trap = 3,
-    Treasure = 4
+    Room = 2
 }
 public enum EnemyType
 {

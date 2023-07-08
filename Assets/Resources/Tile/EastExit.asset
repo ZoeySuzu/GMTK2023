@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3979a8c46adab49419875e82ee215ed7, type: 3}
-  m_Name: TreasureRoom
+  m_Name: EastExit
   m_EditorClassIdentifier: 
-  TileName: TreasureRoom
-  TileSprite: {fileID: 21300000, guid: 6b86a764483379b4885fcf635f9a890a, type: 3}
+  TileName: NorthExit
+  TileSprite: {fileID: 21300000, guid: 25ab12653885c2046a6b970d303bd9f5, type: 3}
   CanModify: 1
   TileType: 2
   TileExitDirections: 4

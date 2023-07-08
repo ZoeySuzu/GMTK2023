@@ -7,7 +7,7 @@ public class Dungeon_Tile: MonoBehaviour
 {
     [SerializeField] public Dungeon_TileData tileData;
 
-    [SerializeField] Direction tileRotation;
+    public Direction TileRealExits;
 
     private void Start()
     {
@@ -22,4 +22,5 @@ public class Dungeon_Tile: MonoBehaviour
         GetComponent<Image>().sprite = tileData.TileSprite;
     }
 
+        
 }

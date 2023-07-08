@@ -25,7 +25,7 @@ public class TestDungeonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setupDungeon();
+        setupTestDungeon();
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class TestDungeonController : MonoBehaviour
         return Random.Range(0, 100) >= chance ? true : false;
     }
 
-    private void setupDungeon()
+    private void setupTestDungeon()
     {
         int x = width;
         int y = height;

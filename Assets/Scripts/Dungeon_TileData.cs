@@ -8,10 +8,6 @@ public class Dungeon_TileData : ScriptableObject
     public string TileName;
     public Sprite TileSprite;
     public bool CanModify = true;
-    public TileType TileType = TileType.Enemy;
+    public TileType TileType = TileType.Room;
     public Direction TileExitDirections;
-
-    public int GoldCost;
-    public string Description;
-    public int InfamyRating;
 }

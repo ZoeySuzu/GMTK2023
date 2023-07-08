@@ -11,8 +11,8 @@ public class TestDungeonController : MonoBehaviour
 
     [SerializeField] GameObject Player;
 
-    [SerializeField] int width = 10;
-    [SerializeField] int height = 5;
+    [SerializeField] int width = 6;
+    [SerializeField] int height = 6;
     [SerializeField] double wallChance = 30;
 
     [SerializeField] float stepTimeDelay = 1f;
@@ -51,11 +51,11 @@ public class TestDungeonController : MonoBehaviour
         int y = height;
 
         currentDungeon = new DungeonLayout(x, y);
-        currentDungeon.startingRoomLocation = (x/2,y -1);
+        currentDungeon.bossRoomLocation = (3, 0);
 
         for (int i = 0; i < x; i++)
         {
-            for (int j = 0; j < y; j++)
+            for (int j = 1; j < y; j++)
             {
                 DungeonRoom currentRoom = new DungeonRoom(0);
                 currentRoom.door = (rand(wallChance), rand(wallChance), rand(wallChance), rand(wallChance)); 
@@ -63,10 +63,19 @@ public class TestDungeonController : MonoBehaviour
             }
         }
 
+        DungeonRoom bossRoom = new DungeonRoom(0);
+        bossRoom.door = (true, false, false, false);
+        currentDungeon.setRoom(currentDungeon.bossRoomLocation.x, currentDungeon.bossRoomLocation.y, bossRoom);
+
+        (bool a, bool b, bool c, bool d) t = currentDungeon.Room(currentDungeon.bossRoomLocation.x, currentDungeon.bossRoomLocation.y + 1).door;
+        currentDungeon.Room(currentDungeon.bossRoomLocation.x, currentDungeon.bossRoomLocation.y + 1).door = (t.a, t.b, true, t.d);
+
         placeRooms();
 
-        currentWalker = new DungeonWalker(currentDungeon, currentDungeon.startingRoomLocation, 0);
-        Player.transform.position = new Vector3((currentDungeon.startingRoomLocation.x * 4) + 2, (currentDungeon.startingRoomLocation.y * 4) + 2, 0);
+        Debug.Log(currentDungeon.setStartingRoomLocation((x / 2, y - 1)));
+
+        currentWalker = new DungeonWalker(currentDungeon, currentDungeon.getStartingRoomLocation(), 0.5f);
+        Player.transform.position = new Vector3((currentDungeon.getStartingRoomLocation().x * 4) + 2, (currentDungeon.getStartingRoomLocation().y * 4) + 2, 0);
     }
 
     private void placeRooms()

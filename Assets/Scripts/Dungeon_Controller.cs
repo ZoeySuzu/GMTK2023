@@ -109,9 +109,10 @@ public class Dungeon_Controller : MonoBehaviour
 
     private void LoadDungeonPathSolver()
     {
-        currentDungeon = new DungeonLayout(6, 5);
+        currentDungeon = new DungeonLayout(6, 6);
         //Resolve Start
-        currentDungeon.startingRoomLocation = (3, 4);
+        currentDungeon.bossRoomLocation = (3, 0);
+        currentDungeon.setStartingRoomLocation((3, 4));
 
         for (int i = 0; i < tiles.GetLength(0); i++)
         {
@@ -130,8 +131,8 @@ public class Dungeon_Controller : MonoBehaviour
             }
         }
 
-        currentWalker = new DungeonWalker(currentDungeon, currentDungeon.startingRoomLocation, 0);
-        Player.transform.position = tiles[currentDungeon.startingRoomLocation.x, currentDungeon.startingRoomLocation.y].gameObject.transform.position + Vector3.back;
+        currentWalker = new DungeonWalker(currentDungeon, currentDungeon.getStartingRoomLocation(), 0);
+        Player.transform.position = tiles[currentDungeon.getStartingRoomLocation().x, currentDungeon.getStartingRoomLocation().y].gameObject.transform.position + Vector3.back;
     }
 
 

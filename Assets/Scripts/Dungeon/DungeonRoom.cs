@@ -1,36 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonRoom : MonoBehaviour
+public class DungeonRoom
 {
 
     [SerializeField] GameObject roomGameObject;
 
-    public bool entryNorth { get; set; }
-    public bool entryEast { get; set; }
-    public bool entrySouth { get; set; }
-    public bool entryWest { get; set; }
+    public (bool north, bool east, bool south, bool west) door { get; set; }
     
     public int rotation { get; set; } // 0, 1, 2, 3 (clockwise)
-    public int xPosition { get; set; }
-    public int yPosition { get; set; }
+    public int x { get; set; }
+    public int y { get; set; }
 
-    public DungeonRoom(int x, int y, int r)
+    public DungeonRoom()
     {
-        xPosition = x;
-        yPosition = y;
+    }
+
+    public DungeonRoom(int r)
+    {
         rotation = r;
     }
 
     public DungeonRoom(int x, int y, int r, bool n, bool e, bool s, bool w)
     {
-        xPosition = x;
-        yPosition = y;
+        this.x = x;
+        this.y = y;
         rotation = r;
-        entryNorth = n;
-        entryEast = e;
-        entrySouth = s;
-        entryWest = w;
+        door = (n, e, s, w);
+    }
+
+    public override string ToString()
+    {
+        return "x: " + x + ", y: " + y + ", rotation: " + rotation + ", North: " + door.north + ", East: " + door.east + ", South: " + door.south + ", West: " + door.west;
     }
 }

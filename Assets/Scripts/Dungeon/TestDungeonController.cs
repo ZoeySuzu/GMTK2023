@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,9 +9,15 @@ public class TestDungeonController : MonoBehaviour
 
     [SerializeField] GameObject Wall;
 
+    [SerializeField] GameObject Player;
+
     [SerializeField] int width = 10;
     [SerializeField] int height = 5;
-    [SerializeField] double wallChance = 20;
+    [SerializeField] double wallChance = 30;
+
+    [SerializeField] float stepTimeDelay = 1f;
+
+    private float currentTimer = 0;
 
     private DungeonLayout currentDungeon;
     private DungeonWalker currentWalker;
@@ -26,7 +31,18 @@ public class TestDungeonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentTimer > stepTimeDelay)
+        {
+            (int x, int y) newPosition = currentWalker.moveStep();
+            Player.transform.position = new Vector3((newPosition.x * 4) + 2, (newPosition.y * 4) + 2, 0);
+            currentTimer = 0;
+        }
+        currentTimer += Time.deltaTime;
+    }
 
+    private bool rand(double chance)
+    {
+        return Random.Range(0, 100) >= chance ? true : false;
     }
 
     private void setupDungeon()
@@ -35,37 +51,29 @@ public class TestDungeonController : MonoBehaviour
         int y = height;
 
         currentDungeon = new DungeonLayout(x, y);
+        currentDungeon.startingRoomLocation = (x/2,y -1);
+
         for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < y; j++)
             {
-                DungeonRoom currentRoom = new DungeonRoom(i, j, 0);
-                currentRoom.entryNorth = Random.Range(0, 100) >= wallChance ? false : true;
-                currentRoom.entryEast = Random.Range(0, 100) >= wallChance ? false : true;
-                currentRoom.entrySouth = Random.Range(0, 100) >= wallChance ? false : true;
-                currentRoom.entryWest = Random.Range(0, 100) >= wallChance ? false : true;
+                DungeonRoom currentRoom = new DungeonRoom(0);
+                currentRoom.door = (rand(wallChance), rand(wallChance), rand(wallChance), rand(wallChance)); 
                 currentDungeon.setRoom(i, j, currentRoom);
             }
         }
-        for (int i = 0; i < x; i++)
-        {
-            currentDungeon.getRoom(i, 0).entrySouth = true;
-            currentDungeon.getRoom(i, y - 1).entryNorth = true;
-        }
-        for (int j = 0; j < y; j++)
-        {
-            currentDungeon.getRoom(0, j).entryWest = true;
-            currentDungeon.getRoom(x - 1, j).entryEast = true;
-        }
 
         placeRooms();
+
+        currentWalker = new DungeonWalker(currentDungeon, currentDungeon.startingRoomLocation, 0);
+        Player.transform.position = new Vector3((currentDungeon.startingRoomLocation.x * 4) + 2, (currentDungeon.startingRoomLocation.y * 4) + 2, 0);
     }
 
     private void placeRooms()
     {
-        for (int i = 0; i < currentDungeon.gridWidth; i++)
+        for (int i = 0; i < currentDungeon.size.x; i++)
         {
-            for (int j = 0; j < currentDungeon.gridHeight; j++)
+            for (int j = 0; j < currentDungeon.size.y; j++)
             {
                 //Frame
                 placeBlock((i * 4), (j * 4));
@@ -75,39 +83,43 @@ public class TestDungeonController : MonoBehaviour
                 placeBlock((i * 4), (j * 4) + 3);
 
                 //Doors
-                if ((i < currentDungeon.gridWidth - 1) && (currentDungeon.getRoom(i, j).entryEast || currentDungeon.getRoom(i + 1, j).entryWest))
+                if (!currentDungeon.canTravel(currentDungeon.Room(i, j), DungeonLayout.Direction.South))
                 {
-                    placeBlock((i * 4) + 4, (j * 4) + 2);
+                    placeBlock((i * 4) + 2, (j * 4));
                 }
-                if (j < currentDungeon.gridHeight - 1 && (currentDungeon.getRoom(i, j).entryNorth || currentDungeon.getRoom(i, j + 1).entrySouth))
+                if (!currentDungeon.canTravel(currentDungeon.Room(i, j), DungeonLayout.Direction.West))
                 {
-                    placeBlock((i * 4) + 2, (j * 4) + 4);
+                    placeBlock((i * 4), (j * 4) + 2);
                 }
             }
         }
-        for (int i = 0; i < currentDungeon.gridWidth; i++)
+        for (int i = 0; i < currentDungeon.size.x; i++)
         {
             //Frame
-            placeBlock((i * 4), (currentDungeon.gridHeight * 4));
-            placeBlock((i * 4) + 1, (currentDungeon.gridHeight * 4));
-            placeBlock((i * 4) + 3, (currentDungeon.gridHeight * 4));
+            placeBlock((i * 4), (currentDungeon.size.y * 4));
+            placeBlock((i * 4) + 1, (currentDungeon.size.y * 4));
+            placeBlock((i * 4) + 3, (currentDungeon.size.y * 4));
 
             //Outer Doors
-            placeBlock((i * 4) + 2, 0);
-            placeBlock((i * 4) + 2, (currentDungeon.gridHeight * 4));
+            if (!currentDungeon.canTravel(currentDungeon.Room(i, currentDungeon.size.y - 1), DungeonLayout.Direction.North))
+            {
+                placeBlock((i * 4) + 2, (currentDungeon.size.y * 4));
+            }
         }
-        for (int j = 0; j < currentDungeon.gridHeight; j++)
+        for (int j = 0; j < currentDungeon.size.y; j++)
         {
             //Frame
-            placeBlock((currentDungeon.gridWidth * 4), (j * 4));
-            placeBlock((currentDungeon.gridWidth * 4), (j * 4) + 1);
-            placeBlock((currentDungeon.gridWidth * 4), (j * 4) + 3);
+            placeBlock((currentDungeon.size.x * 4), (j * 4));
+            placeBlock((currentDungeon.size.x * 4), (j * 4) + 1);
+            placeBlock((currentDungeon.size.x * 4), (j * 4) + 3);
 
             //Outer Doors
-            placeBlock(0, (j * 4) + 2);
-            placeBlock((currentDungeon.gridWidth * 4), (j * 4) + 2);
+            if (!currentDungeon.canTravel(currentDungeon.Room(currentDungeon.size.x - 1, j), DungeonLayout.Direction.East))
+            {
+                placeBlock((currentDungeon.size.x * 4), (j * 4) + 2);
+            }
         }
-        placeBlock((currentDungeon.gridWidth * 4), (currentDungeon.gridHeight * 4));
+        placeBlock((currentDungeon.size.x * 4), (currentDungeon.size.y * 4));
     }
 
     private void placeBlock(int x, int y)

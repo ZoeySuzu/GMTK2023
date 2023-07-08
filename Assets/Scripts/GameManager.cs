@@ -7,12 +7,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        Team_Data team = new Team_Data();
+        team.ConsoleLog();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        team.TeamLevelUp();
+        team.TeamLevelUp();
+        team.TeamLevelUp();
+
+        team.ConsoleLog();
+
+        team.TeamLevelUp();
+        team.TeamLevelUp();
+        team.TeamLevelUp();
+
+        team.ConsoleLog();
     }
 }

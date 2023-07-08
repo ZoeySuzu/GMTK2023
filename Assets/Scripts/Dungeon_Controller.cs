@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Dungeon_Controller : MonoBehaviour
 {
+    public static Dungeon_Controller Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
     [SerializeField] public GameObject PlayerObject;
 
     [SerializeField] GameObject Tile;
 
     [SerializeField] Dungeon_TileData EmptyRoom;
     [SerializeField] Dungeon_TileData EmptyTile;
+    [SerializeField] Dungeon_TileData LockedTile;
 
     DungeonLayout currentDungeon;
     DungeonWalker currentWalker;
@@ -21,7 +30,10 @@ public class Dungeon_Controller : MonoBehaviour
     {
         for(int i = 0; i < alltiles.Length; i++)
         {
-            tiles[i % 6, Mathf.FloorToInt(i / 6)] = alltiles[i];
+            int x = i % 6;
+            int y = Mathf.FloorToInt(i / 6);
+            tiles[x, y] = alltiles[i];
+            tiles[x, y].UpdateTilePosition(x, y);
         }
 
         SetTile(3, 4, EmptyTile);
@@ -33,7 +45,7 @@ public class Dungeon_Controller : MonoBehaviour
 
     private void SetTile(int x, int y, Dungeon_TileData data)
     {
-        if (tiles[x,y].tileData.TileType == TileType.Empty)
+        if (tiles[x,y].tileData.TileType == TileType.Locked)
         {
             if (x > 0) { if (tiles[x - 1, y].tileData.TileType == TileType.Locked) tiles[x - 1, y].UpdateTile(EmptyTile); }
             if (x < 5) { if (tiles[x + 1, y].tileData.TileType == TileType.Locked) tiles[x + 1, y].UpdateTile(EmptyTile); }
@@ -44,20 +56,28 @@ public class Dungeon_Controller : MonoBehaviour
         UpdateTileExits(x, y, data);
     }
 
-    private void UpdateTileExits(int x, int y, Dungeon_TileData data)
+    public void UpdateTileExits(int x, int y, Dungeon_TileData data)
     {
-        if ((int)tiles[x, y].tileData.TileType > 1)
+        if ((int)tiles[x, y].tileData.TileType > 0)
         {
-            if (data.TileExitDirections.HasFlag(Direction.North) && y > 0 && tiles[x, y].tileData.TileExitDirections.HasFlag(Direction.South))
+            if (data.TileExitDirections.HasFlag(Direction.North) && y > 0)
             {
-                tiles[x, y].TileRealExits |= Direction.North;
-                tiles[x, y - 1].TileRealExits |= Direction.South;
+                if (tiles[x, y - 1].tileData.TileType == TileType.Locked) tiles[x, y - 1].UpdateTile(EmptyTile);
+                if (tiles[x, y - 1].tileData.TileExitDirections.HasFlag(Direction.South))
+                {
+                    tiles[x, y].TileRealExits |= Direction.North;
+                    tiles[x, y - 1].TileRealExits |= Direction.South;
+                }
             }
             if (data.TileExitDirections.HasFlag(Direction.South))
             {
-                if (y < 4 && tiles[x, y].tileData.TileExitDirections.HasFlag(Direction.North)){
-                    tiles[x, y].TileRealExits |= Direction.South;
-                    tiles[x, y + 1].TileRealExits |= Direction.North;
+                if (y < 4){
+                    if (tiles[x, y + 1].tileData.TileType == TileType.Locked) tiles[x, y + 1].UpdateTile(EmptyTile);
+                    if (tiles[x, y+1].tileData.TileExitDirections.HasFlag(Direction.North))
+                    {
+                        tiles[x, y].TileRealExits |= Direction.South;
+                        tiles[x, y + 1].TileRealExits |= Direction.North;
+                    }
                 }
                 else if (x == 3 && y == 4) //Boss Room
                 {
@@ -65,15 +85,23 @@ public class Dungeon_Controller : MonoBehaviour
                 }
             }
 
-            if (data.TileExitDirections.HasFlag(Direction.West) && x > 0 && tiles[x-1, y].tileData.TileExitDirections.HasFlag(Direction.East))
+            if (data.TileExitDirections.HasFlag(Direction.West) && x > 0)
             {
-                tiles[x, y].TileRealExits |= Direction.West;
-                tiles[x - 1, y].TileRealExits |= Direction.East;
+                if (tiles[x - 1, y].tileData.TileType == TileType.Locked) tiles[x - 1, y].UpdateTile(EmptyTile);
+                if (tiles[x - 1, y].tileData.TileExitDirections.HasFlag(Direction.East))
+                {
+                    tiles[x, y].TileRealExits |= Direction.West;
+                    tiles[x - 1, y].TileRealExits |= Direction.East;
+                }
             }
-            if (data.TileExitDirections.HasFlag(Direction.East) && x < 5 && tiles[x+1, y].tileData.TileExitDirections.HasFlag(Direction.West))
+            if (data.TileExitDirections.HasFlag(Direction.East) && x < 5)
             {
-                tiles[x, y].TileRealExits |= Direction.East;
-                tiles[x + 1, y].TileRealExits |= Direction.West;
+                if (tiles[x + 1, y].tileData.TileType == TileType.Locked) tiles[x + 1, y].UpdateTile(EmptyTile);
+                if (tiles[x + 1, y].tileData.TileExitDirections.HasFlag(Direction.West))
+                {
+                    tiles[x, y].TileRealExits |= Direction.East;
+                    tiles[x + 1, y].TileRealExits |= Direction.West;
+                }
             }
         }
     }
@@ -119,6 +147,6 @@ public class Dungeon_Controller : MonoBehaviour
             Player.transform.position = tiles[newPosition.x,newPosition.y].gameObject.transform.position + Vector3.back;
             currentTimer = 0;
         }
-        currentTimer += Time.deltaTime;
+        //currentTimer += Time.deltaTime;
     }
 }

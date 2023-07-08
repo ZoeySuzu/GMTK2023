@@ -87,7 +87,6 @@ public class DungeonWalker
         }
 
         //Debug.Log("before: " + pathChoices.Count + " " + previousDirection);
-
         entryWays = new List<(Direction direction, int visited)>();
         if (pathChoices.Count > 1)
         {

@@ -9,9 +9,20 @@ public class Dungeon_Tile: MonoBehaviour
 
     public Direction TileRealExits;
 
+    public (int x, int y) position; 
+
     private void Start()
     {
-        UpdateTile(tileData);
+        if (tileData != null)
+        {
+            UpdateTile(tileData);
+            GetComponent<Button>().onClick.AddListener(() => UI_Shop.Instance.SetShopTile(this));
+        }
+    }
+
+    public void UpdateTilePosition(int x, int y)
+    {
+        position = (x, y);
     }
 
     public void UpdateTile(Dungeon_TileData data)

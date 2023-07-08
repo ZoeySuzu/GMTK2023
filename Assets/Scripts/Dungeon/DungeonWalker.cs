@@ -8,7 +8,7 @@ public class DungeonWalker
     private DungeonLayout dungeon;
     private int[,] visited;
     private DungeonRoom currentRoom;
-    private DungeonLayout.Direction previousDirection = DungeonLayout.Direction.North;
+    private Direction previousDirection = Direction.North;
     private float inteligance;
 
     private int[,] stepsAway;
@@ -27,22 +27,22 @@ public class DungeonWalker
     public (int x, int y) moveStep()
     {
         int visitedWeight = 1;
-        List<(DungeonLayout.Direction direction, int visited)> entryWays = new List<(DungeonLayout.Direction direction, int visited)>();
-        if (dungeon.canTravel(currentRoom, DungeonLayout.Direction.North))
+        List<(Direction direction, int visited)> entryWays = new List<(Direction direction, int visited)>();
+        if (dungeon.canTravel(currentRoom, Direction.North))
         {
-            entryWays.Add((DungeonLayout.Direction.North, visited[currentRoom.x, currentRoom.y + 1]));
+            entryWays.Add((Direction.North, visited[currentRoom.x, currentRoom.y + 1]));
         }
-        if (dungeon.canTravel(currentRoom, DungeonLayout.Direction.East))
+        if (dungeon.canTravel(currentRoom, Direction.East))
         {
-            entryWays.Add((DungeonLayout.Direction.East, visited[currentRoom.x + 1, currentRoom.y]));
+            entryWays.Add((Direction.East, visited[currentRoom.x + 1, currentRoom.y]));
         }
-        if (dungeon.canTravel(currentRoom, DungeonLayout.Direction.South))
+        if (dungeon.canTravel(currentRoom, Direction.South))
         {
-            entryWays.Add((DungeonLayout.Direction.South, visited[currentRoom.x, currentRoom.y - 1]));
+            entryWays.Add((Direction.South, visited[currentRoom.x, currentRoom.y - 1]));
         }
-        if (dungeon.canTravel(currentRoom, DungeonLayout.Direction.West))
+        if (dungeon.canTravel(currentRoom, Direction.West))
         {
-            entryWays.Add((DungeonLayout.Direction.West, visited[currentRoom.x - 1, currentRoom.y]));
+            entryWays.Add((Direction.West, visited[currentRoom.x - 1, currentRoom.y]));
         }
 
         entryWays = entryWays.OrderBy(x => x.visited).ToList();
@@ -53,7 +53,7 @@ public class DungeonWalker
         }
 
         bool matching = true;
-        List<(DungeonLayout.Direction direction, int visited)> pathChoices = new List<(DungeonLayout.Direction direction, int visited)>() { entryWays[0] };
+        List<(Direction direction, int visited)> pathChoices = new List<(Direction direction, int visited)>() { entryWays[0] };
         for (int i = 1; i < entryWays.Count; i++)
         {
             if (matching && entryWays[i].visited == entryWays[i - 1].visited)
@@ -67,7 +67,7 @@ public class DungeonWalker
         }
         //Debug.Log("before: " + pathChoices.Count + " " + previousDirection);
         
-        entryWays = new List<(DungeonLayout.Direction direction, int visited)>();
+        entryWays = new List<(Direction direction, int visited)>();
         if (pathChoices.Count > 1)
         {
             for (int i = 0; i < pathChoices.Count; i++)
@@ -91,21 +91,21 @@ public class DungeonWalker
         //Move
         switch (pathChoices[choice].direction)
         {
-            case DungeonLayout.Direction.North:
+            case Direction.North:
                 currentRoom = dungeon.Room(currentRoom.x, currentRoom.y + 1);
-                previousDirection = DungeonLayout.Direction.South;
+                previousDirection = Direction.South;
                 break;
-            case DungeonLayout.Direction.East:
+            case Direction.East:
                 currentRoom = dungeon.Room(currentRoom.x + 1, currentRoom.y);
-                previousDirection = DungeonLayout.Direction.West;
+                previousDirection = Direction.West;
                 break;
-            case DungeonLayout.Direction.South:
+            case Direction.South:
                 currentRoom = dungeon.Room(currentRoom.x, currentRoom.y - 1);
-                previousDirection = DungeonLayout.Direction.North;
+                previousDirection = Direction.North;
                 break;
-            case DungeonLayout.Direction.West:
+            case Direction.West:
                 currentRoom = dungeon.Room(currentRoom.x - 1, currentRoom.y);
-                previousDirection = DungeonLayout.Direction.East;
+                previousDirection = Direction.East;
                 break;
         }
         Debug.Log(visited[currentRoom.x, currentRoom.y]);

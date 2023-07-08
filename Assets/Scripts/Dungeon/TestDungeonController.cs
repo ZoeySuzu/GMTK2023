@@ -83,11 +83,11 @@ public class TestDungeonController : MonoBehaviour
                 placeBlock((i * 4), (j * 4) + 3);
 
                 //Doors
-                if (!currentDungeon.canTravel(currentDungeon.Room(i, j), DungeonLayout.Direction.South))
+                if (!currentDungeon.canTravel(currentDungeon.Room(i, j), Direction.South))
                 {
                     placeBlock((i * 4) + 2, (j * 4));
                 }
-                if (!currentDungeon.canTravel(currentDungeon.Room(i, j), DungeonLayout.Direction.West))
+                if (!currentDungeon.canTravel(currentDungeon.Room(i, j), Direction.West))
                 {
                     placeBlock((i * 4), (j * 4) + 2);
                 }
@@ -101,7 +101,7 @@ public class TestDungeonController : MonoBehaviour
             placeBlock((i * 4) + 3, (currentDungeon.size.y * 4));
 
             //Outer Doors
-            if (!currentDungeon.canTravel(currentDungeon.Room(i, currentDungeon.size.y - 1), DungeonLayout.Direction.North))
+            if (!currentDungeon.canTravel(currentDungeon.Room(i, currentDungeon.size.y - 1), Direction.North))
             {
                 placeBlock((i * 4) + 2, (currentDungeon.size.y * 4));
             }
@@ -114,7 +114,7 @@ public class TestDungeonController : MonoBehaviour
             placeBlock((currentDungeon.size.x * 4), (j * 4) + 3);
 
             //Outer Doors
-            if (!currentDungeon.canTravel(currentDungeon.Room(currentDungeon.size.x - 1, j), DungeonLayout.Direction.East))
+            if (!currentDungeon.canTravel(currentDungeon.Room(currentDungeon.size.x - 1, j), Direction.East))
             {
                 placeBlock((currentDungeon.size.x * 4), (j * 4) + 2);
             }

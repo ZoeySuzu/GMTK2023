@@ -1,14 +1,6 @@
 public class DungeonLayout
 {
 
-	public enum Direction
-	{
-		North,
-		East,
-		South,
-		West
-	}
-
 	private DungeonRoom[,] rooms;
 
 	public (int x, int y) size { get; set; }

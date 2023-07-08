@@ -1,0 +1,15 @@
+4 characters ( white mage, dark mage, knight, jester)
+princess
+fairy
+
+
+dialog system
+final battle
+art sprites (princess, main hero)
+
+
+forest tile 48x48
+title screen with logo, credits and press start
+story crawl on black screen
+story sequences
+ending

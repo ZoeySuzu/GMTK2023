@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LockedTile
   m_EditorClassIdentifier: 
   TileName: LockedTile
-  TileSprite: {fileID: 21300000, guid: 1f2552203175c914e8b59b64d6398a0f, type: 3}
+  TileSprite: {fileID: 1879588080, guid: cc75cffe12384624cb738adbef535af8, type: 3}
   CanModify: 0
   TileType: 0
   TileExitDirections: 0

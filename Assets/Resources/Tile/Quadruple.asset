@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quadruple
   m_EditorClassIdentifier: 
   TileName: Quadruple
-  TileSprite: {fileID: 21300000, guid: b92d9caa31afe8543b2ec96d2cc2d9d0, type: 3}
+  TileSprite: {fileID: 353189764, guid: cc75cffe12384624cb738adbef535af8, type: 3}
   CanModify: 1
   TileType: 2
   TileExitDirections: -1

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewArmorData", menuName = "Itens/ArmorData", order = 2)]
+[CreateAssetMenu(fileName = "Armor/NewArmorData", menuName = "Itens/ArmorData", order = 2)]
 public class Armor_Data : ScriptableObject
 {
     public string ArmorName;

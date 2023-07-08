@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,4 +47,21 @@ public enum CharacterRole
     Mage = 2,
     Tank = 3,
     Explorer = 4,
+}
+
+[Flags]
+public enum Direction
+{
+    North = 1,
+    East = 2,
+    South = 4,
+    West = 8
+}
+
+public enum TileType
+{
+    Locked = 0,
+    Empty = 1,
+    Room = 2,
+    Event = 3,
 }

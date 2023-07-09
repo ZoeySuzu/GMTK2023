@@ -1,10 +1,5 @@
 
+story sequences (1st time, 3rd time, 6th time, 10th time)
 
-princess
-knight
-dialog system
-art sprites (princess, main hero)
-3 side characters ( white mage, dark mage, jester)
-story sequences
-ending crawl
-final battle
+
+

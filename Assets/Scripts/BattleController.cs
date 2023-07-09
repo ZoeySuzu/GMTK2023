@@ -67,6 +67,12 @@ public class BattleController
                 case EnemyType.Fairy:
                     CirinaAttack();
                     break;
+                case EnemyType.Lilim:
+                    LilimAttack();
+                    break;
+                case EnemyType.Azura:
+                    AzuraAttack();
+                    break;
             }
             if (heroes.Find(x => x.dead == false) == null)
             {
@@ -76,6 +82,47 @@ public class BattleController
         }
         enemiesFirst = false;
         return false;
+    }
+
+    private void LilimAttack()
+    {
+        if (heroes.Where(x => x.dead == false).Count() > 1 && Random.Range(0,3) == 1)
+        {
+            int dmg = activeEnemy.power / heroes.Where(x => x.dead == false).Count();
+            foreach (NPC_Data hero in heroes.Where(x => x.dead == false))
+            {
+                hero.TakeDamage(dmg -50);
+            }
+        }
+        else
+        {
+            int dmg = activeEnemy.power;
+            if (heroes.Where(x => x.dead == false).Count() == 1) dmg += 30;
+            List<NPC_Data> targets = heroes.FindAll(x => x.dead == false);
+            int targetIndex = Random.Range(0, targets.Count);
+            targets[targetIndex].TakeDamage(dmg);
+        }
+    }
+
+    private void AzuraAttack()
+    {
+        if(heroes.Where(x => x.dead == false).Count() > 1)
+        {
+            int dmg = activeEnemy.power / heroes.Where(x => x.dead == false).Count();
+            foreach (NPC_Data hero in heroes.Where(x => x.dead == false))
+            {
+                hero.TakeDamage(dmg+20);
+            }
+        }
+        else
+        {
+            int dmg = activeEnemy.power;
+            List<NPC_Data> targets = heroes.FindAll(x => x.dead == false);
+            int targetIndex = Random.Range(0, targets.Count);
+            targets[targetIndex].TakeDamage(dmg);
+            bool freeze = (Random.Range(0, 3) == 1) ? true : false;
+            targets[targetIndex].frozen |= freeze;
+        }
     }
 
     private bool Spell()
@@ -148,7 +195,6 @@ public class BattleController
 
     private void CirinaAttack()
     {
-
         int attackIndex = Random.Range(0, 5);
         if (attackIndex < 3)
         {

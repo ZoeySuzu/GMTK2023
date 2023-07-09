@@ -1704,6 +1704,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2544957947942352330, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.6328125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544957947942352330, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1135.1416
+      objectReference: {fileID: 0}
     - target: {fileID: 2544957948060539088, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1799,6 +1807,14 @@ PrefabInstance:
     - target: {fileID: 2544957948911476423, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544957949380405504, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.5998535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544957949380405504, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.59277
       objectReference: {fileID: 0}
     - target: {fileID: 2544957949380405507, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
       propertyPath: m_text
@@ -2647,7 +2663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0644316, y: 0.14578046}
   m_AnchorMax: {x: 0.9315893, y: 0.36733446}
-  m_AnchoredPosition: {x: 3.707489, y: 0.4033966}
+  m_AnchoredPosition: {x: 3.707489, y: 0.40338135}
   m_SizeDelta: {x: 10.0585, y: -0.8069}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291247302
@@ -2928,7 +2944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.29941916, y: 0.07594088}
   m_AnchorMax: {x: 0.44541055, y: 0.22462612}
-  m_AnchoredPosition: {x: 0, y: -15.38}
+  m_AnchoredPosition: {x: 0, y: -15.380005}
   m_SizeDelta: {x: 0, y: 30.7599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315234007
@@ -4346,21 +4362,125 @@ MonoBehaviour:
   StartDay: {fileID: 58233910}
   teamUI: {fileID: 1819512201}
   start:
-  - character: 0
-    text: Hi
+  - character: 1
+    text: Hey Lil my fiance will probably be arriving soon with his party to rescue
+      me, don't you think you ought to improve security around this place? At this
+      rate I'm worried he might succeed. Hi
   - character: 1
     text: Hi
-  - character: 2
-    text: Hi
-  - character: 3
-    text: Hi
+  - character: 0
+    text: Right you are, we must make preperations.  We must hire the finest pugglist
+      mercaneries. Also some of these rooms could sure use some sprucing up. To tell
+      you the truth Azura money is tight right now. I wanted to wait until I was
+      back on my feet to make an honest woman of you, but of course your father forced
+      my hand when he organised that arranged marriage to that oaf.
+  - character: 1
+    text: 'You know I don''t care about the money my angel but it would be pretty
+      cool to take that dumb Rayden for all he''s worth. Who does he think he is
+      thinking he can impress me with military might. '
   - character: 4
     text: 
-  scene1: []
-  scene2: []
-  scene3: []
-  end1: []
-  end2: []
+  scene1:
+  - character: 2
+    text: Unhand that fair maiden you foul wretch.
+  - character: 0
+    text: Now is that any way to talk to the future queen.
+  - character: 2
+    text: 'Hah you make me laugh! As if the kingdom would ever accept a creature
+      like you as their ruler. Release my bride at this instance and I will make
+      your death a painless one. '
+  - character: 0
+    text: 'You should leave this place Rayden, you should have never come. '
+  scene2:
+  - character: 2
+    text: aaaauuuhhu
+  - character: 0
+    text: 'You lot sure had a lot of loot on you! I''m already planning the beautiful
+      furnishings, ahh i can see it now. But the question remains what I should do
+      with you. '
+  - character: 1
+    text: I'm sorry Rayden, but you should of listened to me. Try not to be too brutal
+      Lili.
+  - character: 2
+    text: You think this is over, I have an ace up my sleeve, recognise this Azura?
+  - character: 1
+    text: 'Fathers amulet? But he would never give you such a thing? '
+  - character: 2
+    text: That's right he entrusted it with me, your future husband, and therefore
+      future king. You know there's a reason our empire is so strong. This little
+      gem allows me to create a savepoint and return to before I was injured so that
+      I may train up. With this I will rescue you Azura, you can count on it. Suddenly
+      everyone finds themselves back where they were this morning. However it seems
+      those who were in the prescence of the amulet retain their resources and experience.
+  scene3:
+  - character: 0
+    text: 'This is most tedious, but it has it''s upsides. Each time you come in
+      here, I get a little richer. Truly this castle has never looked grander. Soon
+      we will be a nation in our own right. One where monsters and humans can live
+      in harmony. '
+  - character: 2
+    text: Such a sin! I would not allow it, I am stronger now and this place will
+      be your tomb.
+  scene4:
+  - character: 0
+    text: Are the preperations in place my beloved?
+  - character: 1
+    text: They are. It won't be long till this farce is over and we can live in peace.
+      Our castle is near impenetrable and the team is standing by. We won't have
+      to fight this repetitive battle much longer.
+  scene5:
+  - character: 2
+    text: That tears it! I am at my wits end! Surely no wench could be worth this
+      trouble. All this time getting stronger and for what. I am everything a woman
+      could want.
+  - character: 0
+    text: And yet she choose me. You see a succubus and you assume seduction or trickery
+      is at play. Your predudice blinds you to the idea that a "monster" like me
+      could be more appealling than the kings finest soldier.
+  - character: 1
+    text: You must understand Rayden, no matter how much you excelled it wouldn't
+      make a difference. I love Lilim!
+  - character: 2
+    text: That you could love a creature like her is beyond the pail. I would do
+      best to rid this kingdom of the both of you. We could have had a happy life
+      together but now I will have to slay you for fratanising with this beast, and
+      then I will take the kingdom for my own!
+  - character: 0
+    text: You have chosen death with your comments and there will be no redo this
+      time!
+  - character: 3
+    text: A pugglist soldier leaps out from behind a pillar and pounces upon Rayden
+      swallowing the amulet!
+  - character: 0
+    text: 'As you are no doubt aware, the stomach of a pugglist contains a pocket
+      dimension. The empire will never have access to that godlike power to defy
+      fate again! Now face your long overdue death! '
+  end1:
+  - character: 2
+    text: It's over for you! Prepare to meet your maker!
+  - character: 0
+    text: aaaauuuhhu
+  - character: 1
+    text: No my beloved. Please don't die.
+  - character: 0
+    text: I'm sorry my darling but I think I need to rest now.
+  - character: 1
+    text: No please don't close your eyes! Stay with me.
+  - character: 2
+    text: Now that the curse on you is broken you can come home with me.
+  end2:
+  - character: 2
+    text: It's over for you! Prepare to meet your maker!
+  - character: 0
+    text: aaaauuuhhu
+  - character: 1
+    text: No my beloved. Please don't die.
+  - character: 0
+    text: I'm sorry my darling but I think I need to rest now.
+  - character: 1
+    text: I'll kill you Rayden!
+  - character: 3
+    text: Azura charges at rayden and plunges a small dagger deep into his heart.
   TitlePanel: {fileID: 1820524131}
   TitleScroll: {fileID: 1314958702}
   CreditPanel: {fileID: 176272650}
@@ -4415,7 +4535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2670525, y: 0.7180866}
   m_AnchorMax: {x: 0.892896, y: 0.9163841}
-  m_AnchoredPosition: {x: 0.80000305, y: 5}
+  m_AnchoredPosition: {x: 0.7999878, y: 5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462242854
@@ -4717,7 +4837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.34857345, y: 0.61151487}
   m_AnchorMax: {x: 0.9840045, y: 0.89454746}
-  m_AnchoredPosition: {x: -3.3347, y: -0.7631}
+  m_AnchoredPosition: {x: -3.3347015, y: -0.7631073}
   m_SizeDelta: {x: -6.6695, y: -1.5261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501182307
@@ -5334,11 +5454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1937014293174563222, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.8212
+      value: -5.8212013
       objectReference: {fileID: 0}
     - target: {fileID: 1937014293174563222, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.14830017
+      value: 0.14828491
       objectReference: {fileID: 0}
     - target: {fileID: 2107458873699969566, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_fontSize
@@ -5378,7 +5498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9188
+      value: -2.9187927
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5630,11 +5750,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777684886167747226, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.8211994
+      value: -5.8211975
       objectReference: {fileID: 0}
     - target: {fileID: 5777684886167747226, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.3105011
+      value: 0.31051636
       objectReference: {fileID: 0}
     - target: {fileID: 6170002807440836281, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_text
@@ -9954,7 +10074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9188
+      value: -2.9187927
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11555,6 +11675,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1320789875}
     m_Modifications:
+    - target: {fileID: 5867401391412610378, guid: 8a0ca81aca7a8b5458cea67c3b1ccae1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.60009766
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867401391412610378, guid: 8a0ca81aca7a8b5458cea67c3b1ccae1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.59277
+      objectReference: {fileID: 0}
     - target: {fileID: 5867401392150606476, guid: 8a0ca81aca7a8b5458cea67c3b1ccae1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11646,6 +11774,14 @@ PrefabInstance:
     - target: {fileID: 5867401392150606477, guid: 8a0ca81aca7a8b5458cea67c3b1ccae1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867401393186347392, guid: 8a0ca81aca7a8b5458cea67c3b1ccae1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.6328125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867401393186347392, guid: 8a0ca81aca7a8b5458cea67c3b1ccae1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1135.1416
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -11992,6 +12128,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1320789875}
     m_Modifications:
+    - target: {fileID: 4412732404536260724, guid: 6528630c604dd8f48a81d54c7bb865be, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.6328125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412732404536260724, guid: 6528630c604dd8f48a81d54c7bb865be, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1135.1416
+      objectReference: {fileID: 0}
     - target: {fileID: 4412732405580354424, guid: 6528630c604dd8f48a81d54c7bb865be, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12083,6 +12227,14 @@ PrefabInstance:
     - target: {fileID: 4412732405580354425, guid: 6528630c604dd8f48a81d54c7bb865be, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412732406586680510, guid: 6528630c604dd8f48a81d54c7bb865be, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.60009766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412732406586680510, guid: 6528630c604dd8f48a81d54c7bb865be, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.59277
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -14002,7 +14154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0644316, y: 0.14578046}
   m_AnchorMax: {x: 0.9315893, y: 0.36733446}
-  m_AnchoredPosition: {x: -0.00024414062, y: 0.4033966}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0.40338135}
   m_SizeDelta: {x: 0.00048828, y: -0.8069}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374072233
@@ -14933,7 +15085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6007293, y: 0.02905891}
   m_AnchorMax: {x: 0.96566606, y: 0.12750387}
-  m_AnchoredPosition: {x: 4.0999756, y: 6.9999695}
+  m_AnchoredPosition: {x: 4.0999756, y: 6.999939}
   m_SizeDelta: {x: 0.0000038146973, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1452747488
@@ -15711,7 +15863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9188
+      value: -2.9187927
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -15855,7 +16007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010998394701308900, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.6450958
+      value: 2.645111
       objectReference: {fileID: 0}
     - target: {fileID: 4268233336498296933, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_text
@@ -15967,7 +16119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777684886167747226, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.9891
+      value: 3.9891052
       objectReference: {fileID: 0}
     - target: {fileID: 6170002807440836281, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_text
@@ -16079,7 +16231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816342565590453752, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.6450958
+      value: 2.645111
       objectReference: {fileID: 0}
     - target: {fileID: 8464662114357508516, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_Sprite
@@ -16441,7 +16593,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.7
+  m_fontSize: 37.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16537,11 +16689,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1937014293174563222, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.8212
+      value: -5.8212013
       objectReference: {fileID: 0}
     - target: {fileID: 1937014293174563222, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.8701019
+      value: 0.87008667
       objectReference: {fileID: 0}
     - target: {fileID: 2107458873699969566, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_fontSize
@@ -16585,7 +16737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.9188
+      value: -2.9187927
       objectReference: {fileID: 0}
     - target: {fileID: 2824921025467338415, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16729,7 +16881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010998394701308900, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.3224
+      value: 5.3223877
       objectReference: {fileID: 0}
     - target: {fileID: 4268233336498296933, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_text
@@ -16837,11 +16989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777684886167747226, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.8211994
+      value: -5.8211975
       objectReference: {fileID: 0}
     - target: {fileID: 5777684886167747226, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.134903
+      value: 2.1349182
       objectReference: {fileID: 0}
     - target: {fileID: 6170002807440836281, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_text
@@ -16953,7 +17105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816342565590453752, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.3224
+      value: 5.3223877
       objectReference: {fileID: 0}
     - target: {fileID: 8464662114357508516, guid: e2fe0cd0c9a64ac49ab721058e9be05e, type: 3}
       propertyPath: m_Sprite
@@ -19710,6 +19862,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1320789875}
     m_Modifications:
+    - target: {fileID: 2544957947942352330, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.6328125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544957947942352330, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1135.1416
+      objectReference: {fileID: 0}
     - target: {fileID: 2544957948911476422, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -19801,6 +19961,14 @@ PrefabInstance:
     - target: {fileID: 2544957948911476423, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544957949380405504, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.60009766
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544957949380405504, guid: 2268c1aa75fb4384e9334ac1ef15edf9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.59277
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -20294,7 +20462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6007293, y: 0.02905891}
   m_AnchorMax: {x: 0.96566606, y: 0.12750387}
-  m_AnchoredPosition: {x: 4.099991, y: 7.0000305}
+  m_AnchoredPosition: {x: 4.0999756, y: 7.0000305}
   m_SizeDelta: {x: 0.0000038146973, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050442266

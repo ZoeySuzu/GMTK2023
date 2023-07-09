@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogAsset[] scene1;
     [SerializeField] DialogAsset[] scene2;
     [SerializeField] DialogAsset[] scene3;
+    [SerializeField] DialogAsset[] scene4;
+    [SerializeField] DialogAsset[] scene5;
     [SerializeField] DialogAsset[] end1;
     [SerializeField] DialogAsset[] end2;
 
@@ -96,6 +98,8 @@ public class GameManager : MonoBehaviour
         if (day == 5) DialogController.Instance.ParseScript(scene1);
         if (day == 10) DialogController.Instance.ParseScript(scene2);
         if (day == 20) DialogController.Instance.ParseScript(scene3);
+        if (day == 20) DialogController.Instance.ParseScript(scene4);
+        if (day == 20) DialogController.Instance.ParseScript(scene5);
         if (day == 99) GameOver(1);
     }
 
@@ -116,8 +120,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(int i)
     {
-        if(i == 0)
+        if (i == 0)
             DialogController.Instance.ParseScript(end1);
+        else if (i == 1)
+            CreditPanel.SetActive(true);
         else
             DialogController.Instance.ParseScript(end2);
     }

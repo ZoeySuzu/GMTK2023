@@ -246,16 +246,18 @@ public class Dungeon_Controller : MonoBehaviour
                     currentTimer = 0;
                     if (battleController.Tick()) 
                     { 
-                        InBattle = false;
                         if (InBossBattle) {
                             if (lilim.obj.dead)
                             {
                                 battleController = new BattleController(new List<Enemy_Object>() { azura.obj }, GameManager.Instance.team);
                                 InBossBattle = false;
                                 InAzuraBossBattle = true;
+                                GameManager.Instance.RevealAzuraPanel();
                             }
                             else
                             {
+                                InBattle = false;
+                                InBossBattle = false;
                                 IsRaidCurrentlyHapening = false;
                                 azura.obj.TakeDamage(-200);
                                 lilim.obj.TakeDamage(-100);
@@ -272,9 +274,12 @@ public class Dungeon_Controller : MonoBehaviour
                             {
                                 GameManager.Instance.GameOver(2);
                             }
+                            InBattle = false;
+                            IsRaidCurrentlyHapening = false;
                         }
                         else
                         {
+                            InBattle = false;
                             foreach (Enemy_Object enemy in battleTile.enemies.ToList())
                             {
                                 if (enemy.dead)

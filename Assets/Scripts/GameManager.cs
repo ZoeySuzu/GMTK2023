@@ -120,7 +120,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(int i)
     {
-        if (i == 0)
+        Debug.Log("Gameover:" + i);
+        if(i == 0)
             DialogController.Instance.ParseScript(end1);
         else if (i == 1)
             CreditPanel.SetActive(true);

@@ -7881,7 +7881,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Power: 150'
+  m_text: 'Power: 120'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}

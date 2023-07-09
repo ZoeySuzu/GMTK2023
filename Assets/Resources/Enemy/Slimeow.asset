@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slimeow
   m_EditorClassIdentifier: 
   enemyName: Slimeow
-  enemyType: 1
+  enemyType: 0
   goldValue: 50
   power: 5
   maxHealth: 50

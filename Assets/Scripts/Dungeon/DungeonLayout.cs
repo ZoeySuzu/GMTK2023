@@ -27,7 +27,7 @@ public class DungeonLayout
 	{
 		if (rooms[x, y] == null)
 		{
-			DungeonRoom room = new DungeonRoom();
+			DungeonRoom room = new DungeonRoom(null);
 			room.x = x; 
 			room.y = y;
 			return room;

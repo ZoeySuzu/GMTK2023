@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pigzard
   m_EditorClassIdentifier: 
   enemyName: Pigzard
-  enemyType: 4
+  enemyType: 3
   goldValue: 280
   power: 240
   maxHealth: 30

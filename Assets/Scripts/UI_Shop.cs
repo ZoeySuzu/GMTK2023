@@ -14,11 +14,12 @@ public class UI_Shop : MonoBehaviour
 
     [SerializeField] public List<Button> shopButtons;
 
-    public int PlayerGold = 500;
+    public int PlayerGold = 250;
     public int RoomCost = 100;
 
 
     [SerializeField] public Dungeon_Tile shopTile;
+    [SerializeField] public TMP_Text shopTileEnemyCount;
     private Dungeon_Tile targetTile;
 
     private void Awake()
@@ -44,6 +45,7 @@ public class UI_Shop : MonoBehaviour
         Destroy(shopTile.gameObject);
         shopTile = newShopTile;
         targetTile = tile;
+        shopTileEnemyCount.text = "Enemies: " +targetTile.enemies.Count+"/4";
     }
 
     public void PurchaseTile(Dungeon_TileData tileData)
@@ -90,6 +92,7 @@ public class UI_Shop : MonoBehaviour
                 SetShopTile(targetTile);
             }
         }
+        SetShopTile(targetTile);
     }
 
     public void UpdateGoldDisplay()

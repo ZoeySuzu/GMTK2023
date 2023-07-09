@@ -15,6 +15,10 @@ public class Team_Data
             NPC_Data npc = new NPC_Data();
             NpcList.Add(npc);
         }
+        NpcList[0].CharacterName = "Ryden";
+        NpcList[0].Sprite = CharacterSprite.Knight;
+        NpcList[0].Role = CharacterRole.Fighter;
+
     }
 
     public void TeamLevelUp()

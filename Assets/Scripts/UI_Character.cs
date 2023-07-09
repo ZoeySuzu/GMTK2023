@@ -37,6 +37,8 @@ public class UI_Character : MonoBehaviour
         characterMana.text = "MP: " + data.Mana + "/" + data.MaxMana;
         characterGold.text = "Gold: " + data.GoldWorth;
         characterPotions.text = "x " + data.Potions;
+        characterArmor.text = data.ArmorDef + "";
+        characterWeapon.text = data.WeaponAtk + "";
     }
 
 }

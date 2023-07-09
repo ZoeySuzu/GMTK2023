@@ -27,8 +27,10 @@ public enum WeaponType
 
 public enum CharacterSprite
 {
-    Boy1 = 1,
-    Girl1 = 2,
+    Knight = 0,
+    Jester = 1,
+    MageDark = 2,
+    Magelight = 3,
 }
 
 public enum LootTier

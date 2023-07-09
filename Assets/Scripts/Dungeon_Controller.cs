@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Dungeon_Controller : MonoBehaviour
@@ -43,6 +44,7 @@ public class Dungeon_Controller : MonoBehaviour
 
         SetTile(3, 4, EmptyTile);
         SetTile(3, 4, EmptyRoom);
+        SetStartPosition((3, 4));
     }
 
     private void SetTile(int x, int y, Dungeon_TileData data)
@@ -173,13 +175,14 @@ public class Dungeon_Controller : MonoBehaviour
             {
                 if (j == 5)
                 {
-                    DungeonRoom currentRoom = new DungeonRoom();
+                    DungeonRoom currentRoom = new DungeonRoom(null);
                     currentDungeon.setRoom(i, j, currentRoom);
                 }
                 else
                 {
-                    DungeonRoom currentRoom = new DungeonRoom();
                     Dungeon_Tile roomtile = tiles[i, j];
+                    roomtile.enemies.ForEach(x => x.Health = x.MaxHealth);
+                    DungeonRoom currentRoom = new DungeonRoom(roomtile);
                     //Need to calculate exits
                     bool northExit = roomtile.TileRealExits.HasFlag(Direction.North);
                     bool eastExit = roomtile.TileRealExits.HasFlag(Direction.East);
@@ -191,7 +194,7 @@ public class Dungeon_Controller : MonoBehaviour
                 }
             }
         }
-        DungeonRoom bossRoom = new DungeonRoom();
+        DungeonRoom bossRoom = new DungeonRoom(null);
         bossRoom.door = (true, false, false, false);
         currentDungeon.setRoom(3, 5, bossRoom);
     }
@@ -202,8 +205,11 @@ public class Dungeon_Controller : MonoBehaviour
         {
             currentWalker = new DungeonWalker(currentDungeon, currentDungeon.getStartingRoomLocation(), 0);
             Player.transform.position = tiles[currentDungeon.getStartingRoomLocation().x, currentDungeon.getStartingRoomLocation().y].gameObject.transform.position + Vector3.back;
+            if (tiles[currentDungeon.getStartingRoomLocation().x, currentDungeon.getStartingRoomLocation().y].enemies.Count > 0) StartBattle(tiles[currentDungeon.getStartingRoomLocation().x, currentDungeon.getStartingRoomLocation().y]);
             IsRaidCurrentlyHapening = true;
             currentTimer = 0;
+            GameManager.Instance.DayStart();
+            Player.SetActive(true);
         }
     }
 
@@ -211,28 +217,79 @@ public class Dungeon_Controller : MonoBehaviour
     [SerializeField] float stepTimeDelay = 1f;
     private float currentTimer = 0;
     public bool IsRaidCurrentlyHapening = false;
+    public bool InBattle = false;
+    private BattleController battleController;
+    private Dungeon_Tile battleTile;
+
+    public void SetStepSpeed(float value)
+    {
+        stepTimeDelay = value;
+    }
+
     void Update()
     {
 
-        if (IsRaidCurrentlyHapening)
+        if (IsRaidCurrentlyHapening )
         {
             if (currentTimer > stepTimeDelay)
             {
-                (int x, int y) newPosition = currentWalker.moveStep();
-                if (newPosition == (3, 5))
-                {
-                    Debug.Log("Boss");
-                    Player.transform.position = BossRoom.transform.position + Vector3.back;
-                    IsRaidCurrentlyHapening = false;
-                    GameManager.Instance.DayEnd();
+                if (InBattle) {
+                    currentTimer = 0;
+                    if (battleController.Tick()) 
+                    { 
+                        InBattle = false;
+                        foreach (Enemy_Object enemy in battleTile.enemies.ToList())
+                        {
+                            if (enemy.dead)
+                            {
+                                if (enemy.enemyType == EnemyType.Slimeow && Random.Range(0, 4) == 1)
+                                {
+                                    enemy.dead = false; enemy.Health = enemy.MaxHealth;
+                                    enemy.enemyObject.GetComponent<Animator>().enabled = true;
+                                }
+                                else
+                                {
+                                    battleTile.enemies.Remove(enemy);
+                                    Destroy(enemy.enemyObject);
+                                }
+                            }
+                        }
+                    }
+                    if (battleController.heroesDead)
+                    {
+                        IsRaidCurrentlyHapening = false;
+                        Player.SetActive(false);
+                        GameManager.Instance.DayEnd();
+                    }
+                    GameManager.Instance.teamUI.UpdateTeam(GameManager.Instance.team);
                 }
                 else
                 {
-                    Player.transform.position = tiles[newPosition.x, newPosition.y].gameObject.transform.position + Vector3.back;
-                    currentTimer = 0;
+
+                    (int x, int y) newPosition = currentWalker.moveStep();
+                    if (newPosition == (3, 5))
+                    {
+                        Player.transform.position = BossRoom.transform.position + Vector3.back;
+                        IsRaidCurrentlyHapening = false;
+                        GameManager.Instance.DayEnd();
+                    }
+                    else
+                    {
+                        Player.transform.position = tiles[newPosition.x, newPosition.y].gameObject.transform.position + Vector3.back;
+                        if (tiles[newPosition.x, newPosition.y].enemies.Count > 0) StartBattle(tiles[newPosition.x, newPosition.y]);
+                        currentTimer = 0;
+
+                    }
                 }
             }
             currentTimer += Time.deltaTime;
         }
+    }
+
+
+    private void StartBattle(Dungeon_Tile tile) {
+        battleTile = tile;
+        InBattle = true;
+        battleController = new BattleController(tile.enemies, GameManager.Instance.team);
     }
 }

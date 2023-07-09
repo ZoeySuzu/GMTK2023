@@ -9,7 +9,6 @@ public class DungeonWalker
     private int[,] visited;
     private DungeonRoom currentRoom;
     private Direction previousDirection = Direction.North;
-    private float inteligance;
 
     private int[,] stepsAway;
 
@@ -17,7 +16,7 @@ public class DungeonWalker
     {
         dungeon = currentDungeon;
         currentRoom = dungeon.Room(startingPosition.x, startingPosition.y);
-        this.inteligance = inteligance;
+        dungeon.inteligance = inteligance;
 
         visited = new int[dungeon.size.x, dungeon.size.y];
         stepsAway = new int[dungeon.size.x, dungeon.size.y];
@@ -104,7 +103,7 @@ public class DungeonWalker
         int choice;
         List<(Direction direction, int visited)> choices = new List<(Direction direction, int visited)>();
         //Inteligance! 
-        if (Random.Range(0f, 1f) > inteligance)
+        if (Random.Range(0f, 1f) > dungeon.inteligance)
         {
             choice = Random.Range(0, pathChoices.Count);
             choices = pathChoices;

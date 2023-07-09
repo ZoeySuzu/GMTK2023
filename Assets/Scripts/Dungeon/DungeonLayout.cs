@@ -11,6 +11,7 @@ public class DungeonLayout
 	public (int x, int y) bossRoomLocation { get; set; }
 
 	private int[,] dungeonWalk;
+    public float inteligance { get; set; }
 
     public int[,] getDungeonWalk()
     {

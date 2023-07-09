@@ -198,11 +198,11 @@ public class Dungeon_Controller : MonoBehaviour
 
     public void StartNewDungeon()
     {
-        if (SetStartPosition(startingPosition))
+        if (!IsRaidCurrentlyHapening && SetStartPosition(startingPosition))
         {
             currentWalker = new DungeonWalker(currentDungeon, currentDungeon.getStartingRoomLocation(), 0);
             Player.transform.position = tiles[currentDungeon.getStartingRoomLocation().x, currentDungeon.getStartingRoomLocation().y].gameObject.transform.position + Vector3.back;
-            play = true;
+            IsRaidCurrentlyHapening = true;
             currentTimer = 0;
         }
     }
@@ -210,11 +210,11 @@ public class Dungeon_Controller : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] float stepTimeDelay = 1f;
     private float currentTimer = 0;
-    private bool play = false;
+    public bool IsRaidCurrentlyHapening = false;
     void Update()
     {
 
-        if (play)
+        if (IsRaidCurrentlyHapening)
         {
             if (currentTimer > stepTimeDelay)
             {
@@ -223,7 +223,8 @@ public class Dungeon_Controller : MonoBehaviour
                 {
                     Debug.Log("Boss");
                     Player.transform.position = BossRoom.transform.position + Vector3.back;
-                    play = false;
+                    IsRaidCurrentlyHapening = false;
+                    GameManager.Instance.DayEnd();
                 }
                 else
                 {

@@ -1,12 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_Shop : MonoBehaviour
 {
     public static UI_Shop Instance;
+
+    [SerializeField] public TMP_Text PlayerGoldText;
+    [SerializeField] public TMP_Text RoomCostGoldText;
+
+    [SerializeField] public List<Button> shopButtons;
+
+    public int PlayerGold = 500;
+    public int RoomCost = 100;
 
 
     [SerializeField] public Dungeon_Tile shopTile;
@@ -15,10 +24,14 @@ public class UI_Shop : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this; else Destroy(gameObject);
+        PlayerGoldText.text = "Gold: " + PlayerGold;
+        RoomCostGoldText.text = "New Room cost: " + RoomCost;
     }
 
     public void SetShopTile(Dungeon_Tile tile)
     {
+        shopButtons.ForEach(x => x.interactable = true);
+
         Dungeon_Tile newShopTile;
         newShopTile = Instantiate(tile,shopTile.transform.parent.position,Quaternion.identity,shopTile.transform.parent);
         RectTransform rt = newShopTile.GetComponent<RectTransform>();
@@ -33,15 +46,46 @@ public class UI_Shop : MonoBehaviour
         targetTile = tile;
     }
 
-    internal void UpdateTile(Dungeon_TileData tileData)
+    public void PurchaseTile(Dungeon_TileData tileData)
     {
-        targetTile.UpdateTile(tileData);
-        Dungeon_Controller.Instance.UpdateTileExits(targetTile.position.x, targetTile.position.y, tileData);
-        SetShopTile(targetTile);
+        if (Dungeon_Controller.Instance.IsRaidCurrentlyHapening) return;
+        if (targetTile.tileData.TileType == TileType.Empty)
+        {
+            if (PlayerGold >= RoomCost)
+            {
+                PlayerGold -= RoomCost;
+                RoomCost += 100;
+                PlayerGoldText.text = "Gold: " + PlayerGold;
+                RoomCostGoldText.text = "New Room cost: " + RoomCost;
+                targetTile.UpdateTile(tileData);
+                Dungeon_Controller.Instance.UpdateTileExits(targetTile.position.x, targetTile.position.y, tileData);
+                SetShopTile(targetTile);
+            }
+            else
+            {
+                return;
+            }
+        }
+        else if (PlayerGold >= 250)
+        {
+            PlayerGold -= 250;
+            PlayerGoldText.text = "Gold: " + PlayerGold;
+            targetTile.UpdateTile(tileData);
+            Dungeon_Controller.Instance.UpdateTileExits(targetTile.position.x, targetTile.position.y, tileData);
+            SetShopTile(targetTile);
+        }
+
+    }
+
+    public void UpdateGoldDisplay()
+    {
+        PlayerGoldText.text = "Gold: " + PlayerGold;
     }
 
     public void SetStartLocation()
     {
+        if (Dungeon_Controller.Instance.IsRaidCurrentlyHapening) return;
+
         if (targetTile != null && (int)targetTile.tileData.TileType > 1)
         {
             SetShopTile(targetTile);

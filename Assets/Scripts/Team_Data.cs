@@ -9,7 +9,7 @@ public class Team_Data
     public Team_Data(int _level = 1)
     {
         NpcList = new List<NPC_Data>();
-        int teamSize = Random.Range(2, 5);
+        int teamSize = 4;
         for(int i = 1; i <= teamSize; i++)
         {
             NPC_Data npc = new NPC_Data();

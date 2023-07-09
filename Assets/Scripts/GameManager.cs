@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+
+    public TMP_Text DayTracker;
+    public Button StartDay;
 
     private void Awake()
     {
@@ -21,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         team = new Team_Data();
         teamUI.SetTeam(team);
+        DayTracker.text = "Day: " + day;
     }
 
 
@@ -32,10 +39,11 @@ public class GameManager : MonoBehaviour
         UI_Shop.Instance.UpdateGoldDisplay();
 
         day++;
+        DayTracker.text = "Day: " + day;
+        StartDay.interactable = true;
 
         team.TeamLevelUp();
         teamUI.SetTeam(team);
-
     }
 
 }

@@ -157,7 +157,7 @@ public class Dungeon_Controller : MonoBehaviour
         LoadDungeonPathSolver();
         startingPosition = position;
         StartIcon.transform.parent = tiles[position.x, position.y].transform;
-        StartIcon.transform.localPosition = Vector3.one*48; 
+        StartIcon.transform.localPosition = Vector3.zero; 
         isValidStartPosition = currentDungeon.setStartingRoomLocation(position);
         return isValidStartPosition;
     }

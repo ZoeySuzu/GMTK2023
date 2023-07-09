@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7adbf2fefd1e248a521f30bbac5cdb, type: 3}
+  m_Name: Pigzard
+  m_EditorClassIdentifier: 
+  enemyName: Pigzard
+  enemyType: 4
+  goldValue: 280
+  power: 240
+  maxHealth: 30
+  prefab: {fileID: 856199838098023177, guid: e51f29836f7fe3e4ab6f214122337dea, type: 3}

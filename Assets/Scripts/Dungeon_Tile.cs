@@ -7,11 +7,15 @@ public class Dungeon_Tile: MonoBehaviour
 {
     [SerializeField] public Dungeon_TileData tileData;
 
+    [SerializeField] public Transform[] EnemyPositions;
+
     //[SerializeField] public List<>//Enemy OBJ from Anemy Data
 
     public Direction TileRealExits;
 
-    public (int x, int y) position; 
+    public (int x, int y) position;
+
+    public List<Enemy_Object> enemies = new List<Enemy_Object>(); 
 
     private void Start()
     {
@@ -35,5 +39,26 @@ public class Dungeon_Tile: MonoBehaviour
         GetComponent<Image>().sprite = tileData.TileSprite;
     }
 
-        
+    public void AddEnemy(Enemy_Data enemy_Data)
+    {
+        Enemy_Object enemy = new Enemy_Object(enemy_Data);
+        enemy.enemyObject = Instantiate(enemy_Data.prefab, transform);
+        enemies.Add(enemy);
+        DisplayEnemies();
+    }
+    
+
+    public void KillEnemy(Enemy_Object enemy)
+    {
+        enemy.dead = true;
+        enemy.enemyObject.GetComponent<Image>().sprite = SpriteManager.Instance.GetEnemyDeathSprite((int)enemy.enemyType);
+    }
+
+    public void DisplayEnemies()
+    {
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].enemyObject.transform.position = EnemyPositions[i].position;
+        }
+    }
 }

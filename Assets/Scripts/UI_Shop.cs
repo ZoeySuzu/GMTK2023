@@ -77,6 +77,21 @@ public class UI_Shop : MonoBehaviour
 
     }
 
+    public void PurchaseEnemy(Enemy_Data enemyData)
+    {
+        if (Dungeon_Controller.Instance.IsRaidCurrentlyHapening) return;
+        if (targetTile.tileData.TileType != TileType.Empty && targetTile.enemies.Count < 4)
+        {
+            if (PlayerGold >= enemyData.goldValue)
+            {
+                PlayerGold -= enemyData.goldValue;
+                PlayerGoldText.text = "Gold: " + PlayerGold;
+                targetTile.AddEnemy(enemyData);
+                SetShopTile(targetTile);
+            }
+        }
+    }
+
     public void UpdateGoldDisplay()
     {
         PlayerGoldText.text = "Gold: " + PlayerGold;

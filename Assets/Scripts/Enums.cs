@@ -66,8 +66,8 @@ public enum TileType
 }
 public enum EnemyType
 {
-    Slimeow = 1,
-    Fairy = 2,
-    Puglist = 3,
-    CinamonWiz = 4,
+    Slimeow = 0,
+    Fairy = 1,
+    Puglist = 2,
+    CinamonWiz = 3,
 }

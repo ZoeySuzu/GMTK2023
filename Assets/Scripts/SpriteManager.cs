@@ -8,6 +8,7 @@ public class SpriteManager : MonoBehaviour
 
     [SerializeField] Sprite[] ClassSprites;
     [SerializeField] Sprite[] HeroSprites;
+    [SerializeField] Sprite[] EnemyDeathSprites;
 
     private void Awake()
     {
@@ -21,5 +22,9 @@ public class SpriteManager : MonoBehaviour
     public Sprite GetHeroSprite(int index)
     {
         return HeroSprites[index];
+    }
+    public Sprite GetEnemyDeathSprite(int index)
+    {
+        return EnemyDeathSprites[index];
     }
 }

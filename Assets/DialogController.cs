@@ -17,11 +17,15 @@ public class DialogController : MonoBehaviour
         else { Destroy(this); }
     }
 
-    public bool resolved;
+    public bool resolved= true;
 
     [SerializeField] GameObject LilimDialog;
     [SerializeField] GameObject AzuraDialog;
     [SerializeField] GameObject RydenDialog;
+    [SerializeField] GameObject DescriptionDialogue;
+
+    bool justOpened;
+
 
     private void StartDialog(Characters speaker, string text)
     {
@@ -32,25 +36,37 @@ public class DialogController : MonoBehaviour
                 AzuraDialog.SetActive(false);
                 RydenDialog.SetActive(false);
                 LilimDialog.SetActive(true);
+                DescriptionDialogue.SetActive(false);
                 LilimDialog.GetComponentInChildren<TextMeshProUGUI>().text = text;
                 break;
             case 1:
                 AzuraDialog.SetActive(true);
                 RydenDialog.SetActive(false);
                 LilimDialog.SetActive(false);
+                DescriptionDialogue.SetActive(false);
                 AzuraDialog.GetComponentInChildren<TextMeshProUGUI>().text = text;
                 break;
             case 2:
                 AzuraDialog.SetActive(false);
                 RydenDialog.SetActive(true);
                 LilimDialog.SetActive(false);
+                DescriptionDialogue.SetActive(false);
                 RydenDialog.GetComponentInChildren<TextMeshProUGUI>().text = text;
                 break;
             case 3:
                 AzuraDialog.SetActive(false);
                 RydenDialog.SetActive(false);
                 LilimDialog.SetActive(false);
+                DescriptionDialogue.GetComponentInChildren<TextMeshProUGUI>().text = text;
+                DescriptionDialogue.SetActive(true);
                 break;
+            default:
+                AzuraDialog.SetActive(false);
+                RydenDialog.SetActive(false);
+                LilimDialog.SetActive(false);
+                DescriptionDialogue.SetActive(false);
+                break;
+
         }
         count++;
         if (count == scriptLength) Resolve();
@@ -59,6 +75,7 @@ public class DialogController : MonoBehaviour
 
     public void ParseScript(DialogAsset[] script)
     {
+        justOpened = true;
         count = 0;
         resolved = false;
         scriptLength = script.Length;
@@ -68,7 +85,8 @@ public class DialogController : MonoBehaviour
 
     public void Update()
     {
-        if (!resolved && Input.GetKeyDown(KeyCode.Space))
+        if (currentConvo == null) return;
+        if (!resolved && !justOpened && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
             StartDialog(currentConvo[count].character, currentConvo[count].text);
         }
@@ -76,6 +94,7 @@ public class DialogController : MonoBehaviour
         {
             Resolve();
         }
+        if (justOpened) justOpened = false;
     }
 
     private void Resolve()
@@ -83,6 +102,7 @@ public class DialogController : MonoBehaviour
         AzuraDialog.SetActive(false);
         RydenDialog.SetActive(false);
         LilimDialog.SetActive(false);
+        DescriptionDialogue.SetActive(false);
         resolved = true;
     }
 

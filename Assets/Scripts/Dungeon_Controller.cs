@@ -29,10 +29,14 @@ public class Dungeon_Controller : MonoBehaviour
     [SerializeField] public Dungeon_Tile[] alltiles;
     public Dungeon_Tile[,] tiles = new Dungeon_Tile[6,5];
 
-    private (int x, int y) startingPosition = (3, 4);
+    private (int x, int y) startingPosition = (3, 3);
     private bool isValidStartPosition = true;
 
-    private void Start()
+    [SerializeField] Enemy_Data_Holder lilim;
+    [SerializeField] Enemy_Data_Holder azura;
+
+
+    public void Start()
     {
         for(int i = 0; i < alltiles.Length; i++)
         {
@@ -42,9 +46,8 @@ public class Dungeon_Controller : MonoBehaviour
             tiles[x, y].UpdateTilePosition(x, y);
         }
 
-        SetTile(3, 4, EmptyTile);
         SetTile(3, 4, EmptyRoom);
-        SetStartPosition((3, 4));
+        SetTile(3, 3, EmptyRoom);
     }
 
     private void SetTile(int x, int y, Dungeon_TileData data)
@@ -222,6 +225,8 @@ public class Dungeon_Controller : MonoBehaviour
     private float currentTimer = 0;
     public bool IsRaidCurrentlyHapening = false;
     public bool InBattle = false;
+    public bool InBossBattle = false;
+    public bool InAzuraBossBattle = false;
     private BattleController battleController;
     private Dungeon_Tile battleTile;
 
@@ -242,19 +247,48 @@ public class Dungeon_Controller : MonoBehaviour
                     if (battleController.Tick()) 
                     { 
                         InBattle = false;
-                        foreach (Enemy_Object enemy in battleTile.enemies.ToList())
-                        {
-                            if (enemy.dead)
+                        if (InBossBattle) {
+                            if (lilim.obj.dead)
                             {
-                                if (enemy.enemyType == EnemyType.Slimeow && Random.Range(0, 4) == 1)
+                                battleController = new BattleController(new List<Enemy_Object>() { azura.obj }, GameManager.Instance.team);
+                                InBossBattle = false;
+                                InAzuraBossBattle = true;
+                            }
+                            else
+                            {
+                                IsRaidCurrentlyHapening = false;
+                                azura.obj.TakeDamage(-200);
+                                lilim.obj.TakeDamage(-100);
+                                GameManager.Instance.DayEnd();
+                            }
+                        }
+                        else if (InAzuraBossBattle)
+                        {
+                            if (azura.obj.Health == 0)
+                            {
+                                GameManager.Instance.GameOver(0);
+                            }
+                            else
+                            {
+                                GameManager.Instance.GameOver(2);
+                            }
+                        }
+                        else
+                        {
+                            foreach (Enemy_Object enemy in battleTile.enemies.ToList())
+                            {
+                                if (enemy.dead)
                                 {
-                                    enemy.dead = false; enemy.Health = enemy.MaxHealth;
-                                    enemy.enemyObject.GetComponent<Animator>().enabled = true;
-                                }
-                                else
-                                {
-                                    battleTile.enemies.Remove(enemy);
-                                    Destroy(enemy.enemyObject);
+                                    if (enemy.enemyType == EnemyType.Slimeow && Random.Range(0, 4) == 1)
+                                    {
+                                        enemy.dead = false; enemy.Health = enemy.MaxHealth;
+                                        enemy.enemyObject.GetComponent<Animator>().enabled = true;
+                                    }
+                                    else
+                                    {
+                                        battleTile.enemies.Remove(enemy);
+                                        Destroy(enemy.enemyObject);
+                                    }
                                 }
                             }
                         }
@@ -263,6 +297,8 @@ public class Dungeon_Controller : MonoBehaviour
                     {
                         IsRaidCurrentlyHapening = false;
                         Player.SetActive(false);
+                        azura.obj.TakeDamage(-200);
+                        lilim.obj.TakeDamage(-100);
                         GameManager.Instance.DayEnd();
                     }
                     GameManager.Instance.teamUI.UpdateTeam(GameManager.Instance.team);
@@ -274,8 +310,8 @@ public class Dungeon_Controller : MonoBehaviour
                     if (newPosition == (3, 5))
                     {
                         Player.transform.position = BossRoom.transform.position + Vector3.back;
-                        IsRaidCurrentlyHapening = false;
-                        GameManager.Instance.DayEnd();
+                                InBossBattle = true;
+                        StartBossBattle();
                     }
                     else
                     {
@@ -295,5 +331,11 @@ public class Dungeon_Controller : MonoBehaviour
         battleTile = tile;
         InBattle = true;
         battleController = new BattleController(tile.enemies, GameManager.Instance.team);
+    }
+    private void StartBossBattle()
+    {
+
+        InBattle = true;
+        battleController = new BattleController(new List<Enemy_Object>() { lilim.obj }, GameManager.Instance.team);
     }
 }

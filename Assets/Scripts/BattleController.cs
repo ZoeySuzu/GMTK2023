@@ -8,10 +8,13 @@ public class BattleController
     List<Enemy_Object> enemies;
     List<NPC_Data> heroes;
 
+
     bool enemiesFirst;
     bool firstTurn;
 
     public bool heroesDead;
+
+    public bool TargetAzura;
 
     public BattleController(List<Enemy_Object> _enemies, Team_Data _team)
     {
@@ -21,7 +24,6 @@ public class BattleController
         firstTurn = true;
         heroesDead = false;
     }
-
     private Enemy_Object activeEnemy;
     private NPC_Data activeNpc;
 
@@ -46,7 +48,6 @@ public class BattleController
                 }
             }
         }
-
 
         //Resolve enemies
         foreach (Enemy_Object enemy in enemies.FindAll(x => x.dead == false))

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,10 @@ public class Enemy_Object
 
     public EnemyType enemyType;
     public bool dead = false;
-    
+
+    public TMP_Text healthDisplay;
+
+
     public Enemy_Object(Enemy_Data enemy_Data)
     {
         MaxHealth = enemy_Data.maxHealth;
@@ -28,9 +32,14 @@ public class Enemy_Object
         if (Health <= 0) { 
             Health = 0;
             dead = true;
-            enemyObject.GetComponent<Image>().sprite = SpriteManager.Instance.GetEnemyDeathSprite((int)enemyType);
-            enemyObject.GetComponent<Animator>().enabled = false;
+            if ((int)(enemyType) < 4)
+            {
+                enemyObject.GetComponent<Image>().sprite = SpriteManager.Instance.GetEnemyDeathSprite((int)enemyType);
+                enemyObject.GetComponent<Animator>().enabled = false;
+            }
         }
         else if (Health > MaxHealth) Health = MaxHealth;
+
+        if (healthDisplay != null) healthDisplay.text = "HP:" + Health + "/" + MaxHealth;
     }
 }

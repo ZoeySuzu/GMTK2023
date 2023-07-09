@@ -10,6 +10,7 @@ public enum Characters
     Lilim,
     Azura,
     Ryden,
+    Description,
     ENDCONVERSATION
 }
 

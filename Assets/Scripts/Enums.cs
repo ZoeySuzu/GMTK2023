@@ -75,3 +75,12 @@ public enum EnemyType
     Lilim = 4,
     Azura = 5,
 }
+
+public enum GameState
+{
+    Title = 0,
+    Scroll = 1,
+    Dialogue = 2,
+    Game = 3,
+    Credit = 4
+}

@@ -30,16 +30,61 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogAsset[] end1;
     [SerializeField] DialogAsset[] end2;
 
+
+    [SerializeField] GameObject TitlePanel;
+    [SerializeField] GameObject TitleScroll;
+    [SerializeField] GameObject CreditPanel;
+
+    [SerializeField] GameObject AzuraPanel;
+
+    private GameState gameState;
+
     // Start is called before the first frame update
     void Start()
     {
-        team = new Team_Data();
-        teamUI.SetTeam(team);
-        DayTracker.text = "Day: " + day;
-        if (day == 0) DialogController.Instance.ParseScript(start);
+        gameState = GameState.Title;
+        TitlePanel.SetActive(true);
 
     }
 
+    public void Update()
+    {
+        if (gameState == GameState.Title)
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                TitlePanel.SetActive(false);
+                TitleScroll.SetActive(true);
+                gameState = GameState.Scroll;
+            }
+        }
+        else if (gameState == GameState.Scroll)
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                StartGame();
+                Invoke("StartDialogue", 0.1f);
+            }
+        }
+
+    }
+
+    private void StartDialogue()
+    {
+        TitleScroll.SetActive(false);
+        gameState = GameState.Game;
+        DialogController.Instance.ParseScript(start);
+
+    }
+
+
+    public void StartGame()
+    {
+        team = new Team_Data();
+        teamUI.SetTeam(team);
+        day = 0;
+        DayTracker.text = "Day: " + day;
+    }
 
     public void DayEnd() {
 
@@ -51,6 +96,7 @@ public class GameManager : MonoBehaviour
         if (day == 5) DialogController.Instance.ParseScript(scene1);
         if (day == 10) DialogController.Instance.ParseScript(scene2);
         if (day == 20) DialogController.Instance.ParseScript(scene3);
+        if (day == 99) GameOver(1);
     }
 
     public void DayStart()
@@ -59,9 +105,20 @@ public class GameManager : MonoBehaviour
         DayTracker.text = "Day: " + day;
         StartDay.interactable = true;
 
-
         if (day != 1) team.TeamLevelUp();
         teamUI.SetTeam(team);
     }
 
+    public void RevealAzuraPanel()
+    {
+        AzuraPanel.SetActive(true);
+    }
+
+    public void GameOver(int i)
+    {
+        if(i == 0)
+            DialogController.Instance.ParseScript(end1);
+        else
+            DialogController.Instance.ParseScript(end2);
+    }
 }

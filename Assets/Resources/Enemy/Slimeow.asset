@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Slimeow
   enemyType: 0
-  goldValue: 70
-  power: 10
+  goldValue: 50
+  power: 6
   maxHealth: 50
   prefab: {fileID: 1734705338149476695, guid: 0f8447a70c1474c458ca715fb85eb14b, type: 3}

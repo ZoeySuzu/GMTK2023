@@ -19,6 +19,7 @@ public class Dungeon_Controller : MonoBehaviour
 
     [SerializeField] Dungeon_TileData EmptyRoom;
     [SerializeField] Dungeon_TileData EmptyTile;
+    [SerializeField] Dungeon_TileData CrossroadTile;
     [SerializeField] GameObject BossRoom;
 
     [SerializeField] GameObject StartIcon;
@@ -47,7 +48,7 @@ public class Dungeon_Controller : MonoBehaviour
         }
 
         SetTile(3, 4, EmptyRoom);
-        SetTile(3, 3, EmptyRoom);
+        SetTile(3, 3, CrossroadTile);
     }
 
     private void SetTile(int x, int y, Dungeon_TileData data)

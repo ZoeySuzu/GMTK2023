@@ -114,9 +114,10 @@ public class NPC_Data
 
     private int CalculateGoldWorth()
     {
-        float value = (MaxHealth * 1.2f) + (MaxMana * 1.8f) + (Potions * 20) + (Inteligence * 3) + WeaponAtk + ArmorDef;
+        float value = (MaxHealth * 1.2f) + (MaxMana * 1.2f) + (Potions * 10) + (Inteligence * 1.8f) + WeaponAtk + ArmorDef;
         float ratio = 1 + Luck / 400f;
         float finalValue = value * ratio;
+        finalValue *= 0.9f;
         return (int)finalValue;
     }
 

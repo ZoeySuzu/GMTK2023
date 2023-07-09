@@ -74,9 +74,9 @@ public class UI_Shop : MonoBehaviour
                 return;
             }
         }
-        else if (PlayerGold >= 250)
+        else if (PlayerGold >= 200)
         {
-            PlayerGold -= 250;
+            PlayerGold -= 200;
             PlayerGoldText.text = "Gold: " + PlayerGold;
             targetTile.UpdateTile(tileData);
             Dungeon_Controller.Instance.UpdateTileExits(targetTile.position.x, targetTile.position.y, tileData);

@@ -15,9 +15,12 @@ public class NPC_Data
     public int Inteligence; //Will consistently make smart choices to pick right options
     public int Luck;        //Will ocasionaly boost int;
 
-    public Weapon_Data Weapon;
-    public Armor_Data Armor;
+    public int WeaponAtk;
+    public int ArmorDef;
 
+
+    public bool dead;
+    public bool frozen;
     //Spells
 
 
@@ -30,10 +33,25 @@ public class NPC_Data
             Mathf.Max(Random.Range(1, _level*2 + 1), (int)(_level / 5f)):
             Mathf.Max(Random.Range(1, _level + 1), (int)(_level/10f));
         Luck = Random.Range(1, 100);
-        Weapon = new Weapon_Data();
-        Armor = new Armor_Data();
+        WeaponAtk = Random.Range(6, 14);
+        ArmorDef = Random.Range(4, 10);
         Sprite = ChooseRandomSprite();
         GoldWorth = CalculateGoldWorth();
+    }
+
+    public void TakeDamage(int value)
+    {
+        if (value  > 0 && Role == CharacterRole.Tank && Random.Range(0,3) == 0) value/=2;//HalfDamageSometimesOnTanks
+        if (value > 0) { value -= ArmorDef/10;  if (value <= 1) value = 1; }
+        Health -= value;
+        if (Health <= 0) { Health = 0; dead = true; }
+        else if (Health > MaxHealth) Health = MaxHealth;
+    }
+    public void TakeManaDamage(int value)
+    {
+            Mana -= value;
+        if (Mana <= 0) { Mana = 0;}
+        else if (Mana > MaxMana) Mana = MaxMana;
     }
 
     public void SetLevel(int _level)
@@ -77,22 +95,32 @@ public class NPC_Data
         bool increaseInt = (Role == CharacterRole.Explorer) ?
              (Random.Range(0, 5 - (Level - (Inteligence / 2))) == 0):
              (Random.Range(0,10-(Level-(Inteligence/2))) == 0);
+
+        WeaponAtk += (Role == CharacterRole.Fighter) ?
+             Random.Range(1, 5):
+             Random.Range(0, 4);
+        if (WeaponAtk > 500) WeaponAtk = 500;
+
+        ArmorDef += Random.Range(0, 3);
+        if(ArmorDef > 500) ArmorDef = 500;
+
         if (increaseInt) Inteligence++;
         Potions = Random.Range(0, ((Level + 1) / 2));
         GoldWorth = CalculateGoldWorth();
         Health = MaxHealth;
         Mana = MaxMana;
+        dead = false;
     }
 
     private int CalculateGoldWorth()
     {
-        float value = (MaxHealth * 1.2f) + (MaxMana * 5) + (Potions * 30) + (Inteligence * 20) + (int)Weapon.Tier + (int)Armor.Tier;
-        float ratio = 1 + Luck / 100f;
+        float value = (MaxHealth * 1.2f) + (MaxMana * 1.5f) + (Potions * 15) + (Inteligence * 2) + WeaponAtk + ArmorDef;
+        float ratio = 1 + Luck / 400f;
         float finalValue = value * ratio;
         return (int)finalValue;
     }
 
-    private string[] namepool = { "Wren", "Turnip", "Luna", "Gooseman", "AAAA", "Link", "MyButt", "Dan", "MrBum", "Homer", "Puggle", "Reimu", "Cirno", "Jerna", "Ben", "Alex", "Alek", "jekhkl", "Nutt", "Jerry", "PigPig", "Peppy", "Ronald", "Mandy", "Eggbean", "Tess","Mike","Dumpstin","Sammule","Legend","Jane","Chris","Melon","Fridge"};
+    private string[] namepool = { "Wren", "Turnip", "Luna", "Gooseman", "AAAA", "Link", "Dan", "Phoebe","Tess","Homer", "Puggle", "Reimu", "Cirno", "Jerna", "Ben", "Alex", "Alek", "jekhkl", "Nutmeg", "Jerry", "PigPig", "Peppy", "Ronald", "Mandy", "Eggbean", "Tess","Mike","Dumpstin","Sammule","Legend","Jane","Chris","Melon","Fridge","George","Kramer","Elaine","Newman","Paul","Carl","Leah","Sarah"};
     private string RandomizeName()
     {
         int index = Random.Range(0, namepool.Length);

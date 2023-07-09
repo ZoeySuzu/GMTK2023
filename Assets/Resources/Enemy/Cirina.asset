@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7adbf2fefd1e248a521f30bbac5cdb, type: 3}
   m_Name: Cirina
   m_EditorClassIdentifier: 
-  enemyName: Puglelist
-  enemyType: 2
+  enemyName: Cirina
+  enemyType: 1
   goldValue: 1360
   power: 90
   maxHealth: 460
-  prefab: {fileID: 1433259092071399333, guid: 45538f4a729c0fa4eb5c9fb07e39d1d1, type: 3}
+  prefab: {fileID: 2636523348457183322, guid: 791b95d37edd7b24695624cded95e3bf, type: 3}

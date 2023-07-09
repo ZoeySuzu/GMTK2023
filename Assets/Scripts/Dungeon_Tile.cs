@@ -46,13 +46,6 @@ public class Dungeon_Tile: MonoBehaviour
         enemies.Add(enemy);
         DisplayEnemies();
     }
-    
-
-    public void KillEnemy(Enemy_Object enemy)
-    {
-        enemy.dead = true;
-        enemy.enemyObject.GetComponent<Image>().sprite = SpriteManager.Instance.GetEnemyDeathSprite((int)enemy.enemyType);
-    }
 
     public void DisplayEnemies()
     {

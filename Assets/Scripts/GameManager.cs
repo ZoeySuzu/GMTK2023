@@ -18,10 +18,10 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    int day = 1;
-    Team_Data team;
+    int day = 0;
+    public Team_Data team;
 
-    [SerializeField] UI_Team teamUI;
+    [SerializeField] public UI_Team teamUI;
 
     [SerializeField] DialogAsset[] dialog;
     // Start is called before the first frame update
@@ -39,12 +39,15 @@ public class GameManager : MonoBehaviour
         team.NpcList.ForEach(x => goldGained += x.GoldWorth);
         UI_Shop.Instance.PlayerGold += goldGained;
         UI_Shop.Instance.UpdateGoldDisplay();
+    }
 
+    public void DayStart()
+    {
         day++;
         DayTracker.text = "Day: " + day;
         StartDay.interactable = true;
 
-        team.TeamLevelUp();
+        if(day != 1) team.TeamLevelUp();
         teamUI.SetTeam(team);
     }
 

@@ -11,8 +11,11 @@ public class DungeonRoom
     public int x { get; set; }
     public int y { get; set; }
 
-    public DungeonRoom()
+    public Dungeon_Tile tile;
+
+    public DungeonRoom(Dungeon_Tile dungeon_Tile)
     {
+        tile = dungeon_Tile;
     }
 
     public DungeonRoom(int r)

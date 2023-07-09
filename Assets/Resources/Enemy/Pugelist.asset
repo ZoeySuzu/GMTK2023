@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pugelist
   m_EditorClassIdentifier: 
   enemyName: Puglelist
-  enemyType: 3
+  enemyType: 2
   goldValue: 720
   power: 55
   maxHealth: 600

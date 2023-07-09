@@ -20,7 +20,12 @@ public class UI_Shop : MonoBehaviour
     public void SetShopTile(Dungeon_Tile tile)
     {
         Dungeon_Tile newShopTile;
-        newShopTile = Instantiate(tile,shopTile.transform.position,Quaternion.identity,shopTile.transform.parent);
+        newShopTile = Instantiate(tile,shopTile.transform.parent.position,Quaternion.identity,shopTile.transform.parent);
+        RectTransform rt = newShopTile.GetComponent<RectTransform>();
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.sizeDelta = Vector2.zero;
+        rt.anchoredPosition = Vector2.zero;
         Destroy(newShopTile.GetComponent<Button>());
         //newShopTile.GetComponent<RectTransform>().p
         Destroy(shopTile.gameObject);
@@ -33,5 +38,14 @@ public class UI_Shop : MonoBehaviour
         targetTile.UpdateTile(tileData);
         Dungeon_Controller.Instance.UpdateTileExits(targetTile.position.x, targetTile.position.y, tileData);
         SetShopTile(targetTile);
+    }
+
+    public void SetStartLocation()
+    {
+        if (targetTile != null && (int)targetTile.tileData.TileType > 1)
+        {
+            SetShopTile(targetTile);
+            Dungeon_Controller.Instance.SetStartPosition(targetTile.position);
+        }
     }
 }

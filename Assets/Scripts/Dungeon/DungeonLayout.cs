@@ -46,11 +46,11 @@ public class DungeonLayout
 		switch (direction)
 		{
 			case Direction.North:
-				return room.y + 1 < size.y && room.door.north && Room(room.x, room.y + 1).door.south;
+				return room.y - 1 >= 0 && room.door.north && Room(room.x, room.y - 1).door.south;
 			case Direction.East:
                 return room.x + 1 < size.x && room.door.east && Room(room.x + 1, room.y).door.west;
             case Direction.South:
-                return room.y - 1 >= 0 && room.door.south && Room(room.x, room.y - 1).door.north;
+                return room.y + 1 < size.y && room.door.south && Room(room.x, room.y + 1).door.north;
             case Direction.West:
                 return room.x - 1 >= 0 && room.door.west && Room(room.x - 1, room.y).door.east;
 			default: 
@@ -92,7 +92,7 @@ public class DungeonLayout
 
             List<Direction> entryWays = new List<Direction>();
 
-            if (canTravel(Room(currentPosition.x, currentPosition.y), Direction.North) && !visited[currentPosition.x, currentPosition.y + 1])
+            if (canTravel(Room(currentPosition.x, currentPosition.y), Direction.North) && !visited[currentPosition.x, currentPosition.y - 1])
             {
                 entryWays.Add(Direction.North);
             }
@@ -100,7 +100,7 @@ public class DungeonLayout
             {
                 entryWays.Add(Direction.East);
             }
-            if (canTravel(Room(currentPosition.x, currentPosition.y), Direction.South) && !visited[currentPosition.x, currentPosition.y - 1])
+            if (canTravel(Room(currentPosition.x, currentPosition.y), Direction.South) && !visited[currentPosition.x, currentPosition.y + 1])
             {
                 entryWays.Add(Direction.South);
             }
@@ -116,16 +116,16 @@ public class DungeonLayout
                     switch (way)
                     {
                         case Direction.North:
-                            walkerSnake((currentPosition.x, currentPosition.y + 1), copyBoolArray(visited), currentWalkDistance);
-                            visited[currentPosition.x, currentPosition.y + 1] = true;
+                            walkerSnake((currentPosition.x, currentPosition.y - 1), copyBoolArray(visited), currentWalkDistance);
+                            visited[currentPosition.x, currentPosition.y - 1] = true;
                             break;
                         case Direction.East:
                             walkerSnake((currentPosition.x + 1, currentPosition.y), copyBoolArray(visited), currentWalkDistance);
                             visited[currentPosition.x + 1, currentPosition.y] = true;
                             break;
                         case Direction.South:
-                            walkerSnake((currentPosition.x, currentPosition.y - 1), copyBoolArray(visited), currentWalkDistance);
-                            visited[currentPosition.x, currentPosition.y - 1] = true;
+                            walkerSnake((currentPosition.x, currentPosition.y + 1), copyBoolArray(visited), currentWalkDistance);
+                            visited[currentPosition.x, currentPosition.y + 1] = true;
                             break;
                         case Direction.West:
                             walkerSnake((currentPosition.x - 1, currentPosition.y), copyBoolArray(visited), currentWalkDistance);
@@ -139,13 +139,13 @@ public class DungeonLayout
                     switch (entryWays[0])
                     {
                         case Direction.North:
-                            currentPosition = (currentPosition.x, currentPosition.y + 1);
+                            currentPosition = (currentPosition.x, currentPosition.y - 1);
                             break;
                         case Direction.East:
                             currentPosition = (currentPosition.x + 1, currentPosition.y);
                             break;
                         case Direction.South:
-                            currentPosition = (currentPosition.x, currentPosition.y - 1);
+                            currentPosition = (currentPosition.x, currentPosition.y + 1);
                             break;
                         case Direction.West:
                             currentPosition = (currentPosition.x - 1, currentPosition.y);

@@ -31,8 +31,8 @@ public class DungeonWalker
         List<(Direction direction, int stepsToBoss)> inteligantWays = new List<(Direction direction, int visited)>();
         if (dungeon.canTravel(currentRoom, Direction.North))
         {
-            entryWays.Add((Direction.North, visited[currentRoom.x, currentRoom.y + 1]));
-            inteligantWays.Add((Direction.North, dungeon.getDungeonWalk()[currentRoom.x, currentRoom.y + 1]));
+            entryWays.Add((Direction.North, visited[currentRoom.x, currentRoom.y - 1]));
+            inteligantWays.Add((Direction.North, dungeon.getDungeonWalk()[currentRoom.x, currentRoom.y - 1]));
         }
         if (dungeon.canTravel(currentRoom, Direction.East))
         {
@@ -41,8 +41,8 @@ public class DungeonWalker
         }
         if (dungeon.canTravel(currentRoom, Direction.South))
         {
-            entryWays.Add((Direction.South, visited[currentRoom.x, currentRoom.y - 1]));
-            inteligantWays.Add((Direction.South, dungeon.getDungeonWalk()[currentRoom.x, currentRoom.y - 1]));
+            entryWays.Add((Direction.South, visited[currentRoom.x, currentRoom.y + 1]));
+            inteligantWays.Add((Direction.South, dungeon.getDungeonWalk()[currentRoom.x, currentRoom.y + 1]));
         }
         if (dungeon.canTravel(currentRoom, Direction.West))
         {
@@ -124,7 +124,7 @@ public class DungeonWalker
         switch (choices[choice].direction)
         {
             case Direction.North:
-                currentRoom = dungeon.Room(currentRoom.x, currentRoom.y + 1);
+                currentRoom = dungeon.Room(currentRoom.x, currentRoom.y - 1);
                 previousDirection = Direction.South;
                 break;
             case Direction.East:
@@ -132,7 +132,7 @@ public class DungeonWalker
                 previousDirection = Direction.West;
                 break;
             case Direction.South:
-                currentRoom = dungeon.Room(currentRoom.x, currentRoom.y - 1);
+                currentRoom = dungeon.Room(currentRoom.x, currentRoom.y + 1);
                 previousDirection = Direction.North;
                 break;
             case Direction.West:

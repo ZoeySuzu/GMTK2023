@@ -15,6 +15,6 @@ public class RoomShopButton : MonoBehaviour
 
     private void PurchaseItem()
     {
-
+        UI_Shop.Instance.UpdateTile(tileData);
     }
 }

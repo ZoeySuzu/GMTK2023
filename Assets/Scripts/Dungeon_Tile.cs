@@ -7,6 +7,8 @@ public class Dungeon_Tile: MonoBehaviour
 {
     [SerializeField] public Dungeon_TileData tileData;
 
+    //[SerializeField] public List<>//Enemy OBJ from Anemy Data
+
     public Direction TileRealExits;
 
     public (int x, int y) position; 

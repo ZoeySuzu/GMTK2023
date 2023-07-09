@@ -169,6 +169,10 @@ public class Dungeon_Controller : MonoBehaviour
         currentDungeon = new DungeonLayout(6, 6);
         currentDungeon.bossRoomLocation = (3, 5);
 
+        float intel = GameManager.Instance.team.NpcList.Sum(x => x.Inteligence) / GameManager.Instance.team.NpcList.Count;
+        if (intel > 100) { intel = 100; } else if (intel < 10) { intel = 10; }
+        currentDungeon.inteligance = intel;
+
         for (int i = 0; i < tiles.GetLength(0); i++)
         {
             for (int j = 0; j < tiles.GetLength(1)+1; j++)

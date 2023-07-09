@@ -33,8 +33,8 @@ public class NPC_Data
             Mathf.Max(Random.Range(1, _level*2 + 1), (int)(_level / 5f)):
             Mathf.Max(Random.Range(1, _level + 1), (int)(_level/10f));
         Luck = Random.Range(1, 100);
-        WeaponAtk = Random.Range(6, 14);
-        ArmorDef = Random.Range(4, 10);
+        WeaponAtk = Random.Range(8, 17);
+        ArmorDef = Random.Range(8, 12);
         Sprite = ChooseRandomSprite();
         GoldWorth = CalculateGoldWorth();
     }
@@ -59,7 +59,7 @@ public class NPC_Data
         Level = _level;
         MaxHealth = (Role == CharacterRole.Tank) ?
             Random.Range(15, 26) + _level * Random.Range(7, 10) + Random.Range(2, 8) * _level:
-            Random.Range(7, 13) + _level * Random.Range(4, 7) + Random.Range(0, 6) * _level;
+            Random.Range(10, 17) + _level * Random.Range(4, 7) + Random.Range(0, 6) * _level;
         MaxMana = (Role == CharacterRole.Mage) ?
               Random.Range(_level / 2 + 1, _level*2 + 1):
               Random.Range(0, _level + 1);
@@ -114,7 +114,7 @@ public class NPC_Data
 
     private int CalculateGoldWorth()
     {
-        float value = (MaxHealth * 1.2f) + (MaxMana * 1.5f) + (Potions * 15) + (Inteligence * 2) + WeaponAtk + ArmorDef;
+        float value = (MaxHealth * 1.2f) + (MaxMana * 1.8f) + (Potions * 20) + (Inteligence * 3) + WeaponAtk + ArmorDef;
         float ratio = 1 + Luck / 400f;
         float finalValue = value * ratio;
         return (int)finalValue;

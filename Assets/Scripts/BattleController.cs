@@ -17,7 +17,7 @@ public class BattleController
     {
         enemies = _enemies;
         heroes = _team.NpcList;
-        enemiesFirst = Random.Range(0, 2) == 1 ? true : false;
+        enemiesFirst = Random.Range(0, 3) <= 1 ? true : false;
         firstTurn = true;
         heroesDead = false;
     }
@@ -79,6 +79,33 @@ public class BattleController
 
     private bool Spell()
     {
+        if (activeNpc.Mana > 0 && Random.Range(0,3) == 0)
+        {
+            int attackIndex = Random.Range(0, 10);
+            if (attackIndex < 7)
+            {
+                int dmg = activeNpc.WeaponAtk + activeNpc.WeaponAtk/2;
+
+                List<Enemy_Object> targets = enemies.FindAll(x => x.dead == false);
+                int targetIndex = Random.Range(0, targets.Count);
+                targets[targetIndex].TakeDamage(dmg);
+            }
+            else if(activeNpc.Mana > 1 && activeNpc.Role == CharacterRole.Mage)
+            {
+                int dmg = (activeNpc.WeaponAtk * 4) / enemies.Where(x => x.dead == false).Count();
+                foreach (Enemy_Object enemy in enemies.Where(x => x.dead == false))
+                {
+                    enemy.TakeDamage(dmg);
+                }
+                activeNpc.Mana--;
+            }
+            else
+            {
+                return false;
+            }
+            activeNpc.Mana--;
+            return true;
+        }
         return false;
     }
 
@@ -163,11 +190,15 @@ public class BattleController
 
     private void PugleistAttack()
     {
-
+        int dmgBonus = 0;
+        if (enemies.FindAll(x => x.dead == false).Find(y => y != activeEnemy) == null)
+        {
+            dmgBonus = 30;
+        }
         int attackIndex = Random.Range(0, 5);
         if (attackIndex < 3)
         {
-            int dmg = activeEnemy.power;
+            int dmg = activeEnemy.power + dmgBonus;
 
             List<NPC_Data> targets = heroes.FindAll(x => x.dead == false);
             int targetIndex = Random.Range(0, targets.Count);
@@ -175,7 +206,7 @@ public class BattleController
         }
         else
         {
-            int dmg = activeEnemy.power / heroes.Where(x => x.dead == false).Count();
+            int dmg = activeEnemy.power / heroes.Where(x => x.dead == false).Count() + dmgBonus; 
             foreach (NPC_Data hero in heroes.Where(x => x.dead == false))
             {
                 hero.TakeDamage(dmg);

@@ -887,7 +887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Power: 55'
+  m_text: 'Power: 50'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}
@@ -1609,7 +1609,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Power: 5'
+  m_text: 'Power: 10
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}
@@ -1636,7 +1638,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.2
+  m_fontSize: 16.2
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4748,7 +4750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A powerful fighter from the forbidden forest
+  m_text: A strong melee fighter thats fights better on its own
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}
@@ -4775,7 +4777,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.75
+  m_fontSize: 11.9
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6459,7 +6461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '280
+  m_text: '180
 
 
 '
@@ -11986,7 +11988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enemies: 4/4'
+  m_text: 'Enemies: 0/4'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}
@@ -14425,7 +14427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 70
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}
@@ -17421,7 +17423,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1360
+  m_text: '960
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}
@@ -18476,8 +18480,6 @@ MonoBehaviour:
   - {fileID: 726438691}
   - {fileID: 2133728757}
   - {fileID: 204646163}
-  PlayerGold: 500
-  RoomCost: 100
   shopTile: {fileID: 435638073}
   shopTileEnemyCount: {fileID: 1286148423}
 --- !u!1 &1931578675 stripped
@@ -19765,7 +19767,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 720
+  m_text: '520
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45203f13f6ab314b809137875d37a43, type: 2}
   m_sharedMaterial: {fileID: 5253824803700452199, guid: c45203f13f6ab314b809137875d37a43, type: 2}

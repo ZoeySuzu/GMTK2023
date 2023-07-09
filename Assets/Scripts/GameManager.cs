@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         int goldGained = 0;
         team.NpcList.ForEach(x => goldGained += x.GoldWorth);
-        UI_Shop.Instance.PlayerGold += goldGained;
+        UI_Shop.Instance.AddPlayerGold(goldGained);
         UI_Shop.Instance.UpdateGoldDisplay();
     }
 

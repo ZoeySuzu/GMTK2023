@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Pigzard
   enemyType: 3
-  goldValue: 280
-  power: 240
-  maxHealth: 30
+  goldValue: 180
+  power: 30
+  maxHealth: 240
   prefab: {fileID: 856199838098023177, guid: e51f29836f7fe3e4ab6f214122337dea, type: 3}

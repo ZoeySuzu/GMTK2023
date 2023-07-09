@@ -14,8 +14,8 @@ public class UI_Shop : MonoBehaviour
 
     [SerializeField] public List<Button> shopButtons;
 
-    public int PlayerGold = 250;
-    public int RoomCost = 100;
+    private int PlayerGold = 250;
+    private int RoomCost = 100;
 
 
     [SerializeField] public Dungeon_Tile shopTile;
@@ -46,6 +46,12 @@ public class UI_Shop : MonoBehaviour
         shopTile = newShopTile;
         targetTile = tile;
         shopTileEnemyCount.text = "Enemies: " +targetTile.enemies.Count+"/4";
+    }
+
+    internal void AddPlayerGold(int goldGained)
+    {
+        PlayerGold += goldGained;
+        PlayerGoldText.text = "Gold: " + PlayerGold;
     }
 
     public void PurchaseTile(Dungeon_TileData tileData)

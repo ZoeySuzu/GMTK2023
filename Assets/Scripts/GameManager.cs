@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] UI_Team teamUI;
+
+    [SerializeField] DialogAsset[] dialog;
     // Start is called before the first frame update
     void Start()
     {

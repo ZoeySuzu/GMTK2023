@@ -72,4 +72,6 @@ public enum EnemyType
     Fairy = 1,
     Puglist = 2,
     CinamonWiz = 3,
+    Lilim = 4,
+    Azura = 5,
 }

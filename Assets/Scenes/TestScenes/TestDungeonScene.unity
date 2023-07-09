@@ -4084,7 +4084,20 @@ MonoBehaviour:
   DayTracker: {fileID: 1700624985}
   StartDay: {fileID: 58233910}
   teamUI: {fileID: 1819512201}
-  dialog: []
+  start:
+  - character: 0
+    text: Hi
+  - character: 1
+    text: Hi
+  - character: 2
+    text: Hi
+  - character: 3
+    text: 
+  scene1: []
+  scene2: []
+  scene3: []
+  end1: []
+  end2: []
 --- !u!4 &445678217
 Transform:
   m_ObjectHideFlags: 0

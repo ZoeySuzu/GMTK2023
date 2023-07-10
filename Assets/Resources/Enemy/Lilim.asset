@@ -15,6 +15,6 @@ MonoBehaviour:
   enemyName: Lilim
   enemyType: 4
   goldValue: 0
-  power: 120
+  power: 100
   maxHealth: 1000
   prefab: {fileID: 2636523348457183322, guid: 791b95d37edd7b24695624cded95e3bf, type: 3}

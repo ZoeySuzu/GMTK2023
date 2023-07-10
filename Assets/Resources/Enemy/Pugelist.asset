@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Puglelist
   enemyType: 2
-  goldValue: 360
-  power: 40
-  maxHealth: 540
+  goldValue: 520
+  power: 26
+  maxHealth: 240
   prefab: {fileID: 1433259092071399333, guid: 45538f4a729c0fa4eb5c9fb07e39d1d1, type: 3}

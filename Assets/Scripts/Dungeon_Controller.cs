@@ -303,8 +303,7 @@ public class Dungeon_Controller : MonoBehaviour
                     {
                         IsRaidCurrentlyHapening = false;
                         Player.SetActive(false);
-                        azura.obj.TakeDamage(-200);
-                        lilim.obj.TakeDamage(-100);
+                        lilim.obj.TakeDamage(-20);
                         GameManager.Instance.DayEnd();
                     }
                     GameManager.Instance.teamUI.UpdateTeam(GameManager.Instance.team);

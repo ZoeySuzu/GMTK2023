@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Cirina
   enemyType: 1
-  goldValue: 640
-  power: 50
-  maxHealth: 360
+  goldValue: 1040
+  power: 36
+  maxHealth: 120
   prefab: {fileID: 2636523348457183322, guid: 791b95d37edd7b24695624cded95e3bf, type: 3}

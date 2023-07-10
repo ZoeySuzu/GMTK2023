@@ -212,7 +212,7 @@ public class BattleController
 
             List<NPC_Data> targets = heroes.FindAll(x => x.dead == false);
             int targetIndex = Random.Range(0, targets.Count);
-            targets[targetIndex].TakeDamage(dmg*4);
+            targets[targetIndex].TakeDamage(dmg*3);
         }
     }
 
@@ -240,7 +240,7 @@ public class BattleController
         int dmgBonus = 0;
         if (enemies.FindAll(x => x.dead == false).Find(y => y != activeEnemy) == null)
         {
-            dmgBonus = 30;
+            dmgBonus = 16;
         }
         int attackIndex = Random.Range(0, 5);
         if (attackIndex < 3)

@@ -15,6 +15,6 @@ MonoBehaviour:
   enemyName: Azura
   enemyType: 5
   goldValue: 0
-  power: 40
+  power: 30
   maxHealth: 500
   prefab: {fileID: 2636523348457183322, guid: 791b95d37edd7b24695624cded95e3bf, type: 3}

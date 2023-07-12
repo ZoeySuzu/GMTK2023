@@ -4437,6 +4437,8 @@ MonoBehaviour:
       your death a painless one. '
   - character: 0
     text: 'You should leave this place Rayden, you should have never come. '
+  - character: 4
+    text: 
   scene2:
   - character: 2
     text: aaaauuuhhu
@@ -4458,6 +4460,11 @@ MonoBehaviour:
       I may train up. With this I will rescue you Azura, you can count on it. Suddenly
       everyone finds themselves back where they were this morning. However it seems
       those who were in the prescence of the amulet retain their resources and experience.
+  - character: 3
+    text: The amulet glows brightly. Suddenly Ryden teleports away. Lilim and Azura
+      find themselves fully healed and sitting on their thrones.
+  - character: 4
+    text: 
   scene3:
   - character: 0
     text: 'This is most tedious, but it has it''s upsides. Each time you come in
@@ -4467,8 +4474,51 @@ MonoBehaviour:
   - character: 2
     text: Such a sin! I would not allow it, I am stronger now and this place will
       be your tomb.
-  scene4: []
-  scene5: []
+  - character: 4
+    text: 
+  scene4:
+  - character: 0
+    text: Are the preperations in place my beloved?
+  - character: 1
+    text: They are. It won't be long till this farce is over and we can live in peace. 
+      Our castle is near impenetrable and the team is standing by. We won't have
+      to fight this repetitive battle much longer.
+  - character: 4
+    text: 
+  scene5:
+  - character: 2
+    text: That tears it! I am at my wits end! Surely no wench could be worth this
+      trouble. All this time getting stronger and for what. I am everything a woman
+      could want.
+  - character: 0
+    text: And yet she choose me. You see a succubus and you assume seduction or trickery 
+      is at play. Your predudice blinds you to the idea that a "monster" like me
+      could be more appealling than the kings finest soldier.
+  - character: 1
+    text: You must understand Rayden, no matter how much you excelled it wouldn't 
+      make a difference. I love Lilim!
+  - character: 2
+    text: That you could love a creature like her is beyond the pail. I would do
+      best to rid this kingdom of the both of you. We could have had a happy life      
+      together but now I will have to slay you for fratanising with this beast, and
+      then I will take the kingdom for my own!
+  - character: 2
+    text: That you could love a creature like her is beyond the pail. I would do
+      best to rid this kingdom of the both of you. We could have had a happy life      
+      together but now I will have to slay you for fratanising with this beast, and
+      then I will take the kingdom for my own!
+  - character: 0
+    text: You have chosen death with your comments and there will be no redo this
+      time!
+  - character: 3
+    text: A pugglist soldier leaps out from behind a pillar and pounces upon Rayden
+      swallowing the amulet!
+  - character: 0
+    text: Hahaha. As you are no doubt aware, the stomach of a pugglist contains a
+      pocket dimension. The empire will never have access to that godlike power to
+      defy fate again! Now face your long overdue death!
+  - character: 4
+    text: 
   end1:
   - character: 2
     text: It's over for you! Prepare to meet your maker!
@@ -4482,6 +4532,8 @@ MonoBehaviour:
     text: No please don't close your eyes! Stay with me.
   - character: 2
     text: Now that the curse on you is broken you can come home with me.
+  - character: 4
+    text: 
   end2:
   - character: 2
     text: It's over for you! Prepare to meet your maker!
@@ -4495,6 +4547,8 @@ MonoBehaviour:
     text: I'll kill you Rayden!
   - character: 3
     text: Azura charges at rayden and plunges a small dagger deep into his heart.
+  - character: 4
+    text: 
   TitlePanel: {fileID: 1820524131}
   TitleScroll: {fileID: 1314958702}
   CreditPanel: {fileID: 176272650}
@@ -5141,7 +5195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0644316, y: 0.14578046}
   m_AnchorMax: {x: 0.9315893, y: 0.36733446}
-  m_AnchoredPosition: {x: 3.707489, y: 1.9961815}
+  m_AnchoredPosition: {x: 3.707489, y: 1.9961853}
   m_SizeDelta: {x: 10.0585, y: -3.9926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525538915
@@ -6340,7 +6394,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.9
+  m_fontSize: 45.95
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20324,7 +20378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0644316, y: 0.14578046}
   m_AnchorMax: {x: 0.9315893, y: 0.36733446}
-  m_AnchoredPosition: {x: 3.707489, y: 1.996212}
+  m_AnchoredPosition: {x: 3.707489, y: 1.9962158}
   m_SizeDelta: {x: 10.0585, y: -3.9926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2028148644

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogAsset[] scene5;
     [SerializeField] DialogAsset[] end1;
     [SerializeField] DialogAsset[] end2;
+    [SerializeField] DialogAsset[] end3;
 
 
     [SerializeField] GameObject TitlePanel;
@@ -96,7 +97,6 @@ public class GameManager : MonoBehaviour
         UI_Shop.Instance.UpdateGoldDisplay();
 
         if (day == 1) DialogController.Instance.ParseScript(scene1);
-        if (day == 2) DialogController.Instance.ParseScript(scene2);
         if (day == 5) DialogController.Instance.ParseScript(scene3);
         if (day == 10) DialogController.Instance.ParseScript(scene4);
         if (day == 11) DialogController.Instance.ParseScript(scene5);
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         if(i == 0)
             DialogController.Instance.ParseScript(end1);
         else if (i == 1)
-            CreditPanel.SetActive(true);
+            DialogController.Instance.ParseScript(end3);
         else
             DialogController.Instance.ParseScript(end2);
     }

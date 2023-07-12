@@ -4437,9 +4437,8 @@ MonoBehaviour:
       your death a painless one. '
   - character: 0
     text: 'You should leave this place Rayden, you should have never come. '
-  - character: 4
-    text: 
-  scene2:
+  - character: 3
+    text: At the end of the long battle, the two women come out victorious.
   - character: 2
     text: aaaauuuhhu
   - character: 0
@@ -4465,6 +4464,7 @@ MonoBehaviour:
       find themselves fully healed and sitting on their thrones.
   - character: 4
     text: 
+  scene2: []
   scene3:
   - character: 0
     text: 'This is most tedious, but it has it''s upsides. Each time you come in
@@ -4547,6 +4547,18 @@ MonoBehaviour:
     text: I'll kill you Rayden!
   - character: 3
     text: Azura charges at rayden and plunges a small dagger deep into his heart.
+  - character: 4
+    text: 
+  end3:
+  - character: 0
+    text: I think it's over Azura, what do we do now?
+  - character: 1
+    text: Now we make this a country where humans and monsters can live in harmony.
+  - character: 0
+    text: Do you think the people can accept such a world?
+  - character: 1
+    text: Without the use of the amulet the kingdom has no power. We can show everyone
+      a world with peace and understanding for all.
   - character: 4
     text: 
   TitlePanel: {fileID: 1820524131}
@@ -11397,7 +11409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06443943, y: 0.39095575}
   m_AnchorMax: {x: 0.45635632, y: 0.52413446}
-  m_AnchoredPosition: {x: 5.7775, y: 0}
+  m_AnchoredPosition: {x: 5.777508, y: 0}
   m_SizeDelta: {x: 11.5549, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166068131

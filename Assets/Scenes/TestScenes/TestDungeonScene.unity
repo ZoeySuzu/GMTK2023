@@ -4422,8 +4422,8 @@ MonoBehaviour:
       my hand when he organised that arranged marriage to that oaf.
   - character: 1
     text: 'You know I don''t care about the money my angel but it would be pretty
-      cool to take that dumb Ryden for all he''s worth. Who does he think he is
-      thinking he can impress me with military might. '
+      cool to take that dumb Ryden for all he''s worth. Who does he think he is thinking
+      he can impress me with military might. '
   - character: 4
     text: 
   scene1:
@@ -4456,9 +4456,7 @@ MonoBehaviour:
     text: That's right he entrusted it with me, your future husband, and therefore
       future king. You know there's a reason our empire is so strong. This little
       gem allows me to create a savepoint and return to before I was injured so that
-      I may train up. With this I will rescue you Azura, you can count on it. Suddenly
-      everyone finds themselves back where they were this morning. However it seems
-      those who were in the prescence of the amulet retain their resources and experience.
+      I may train up. With this I will rescue you Azura, you can count on it.
   - character: 3
     text: The amulet glows brightly. Suddenly Ryden teleports away. Lilim and Azura
       find themselves fully healed and sitting on their thrones.

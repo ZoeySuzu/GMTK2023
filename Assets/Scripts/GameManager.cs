@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         if (day == 1) DialogController.Instance.ParseScript(scene1);
         if (day == 5) DialogController.Instance.ParseScript(scene3);
         if (day == 10) DialogController.Instance.ParseScript(scene4);
-        if (day == 11) DialogController.Instance.ParseScript(scene5);
+        if (day == 14) DialogController.Instance.ParseScript(scene5);
         if (day == 15) GameOver(1);
     }
 
